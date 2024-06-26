@@ -5,9 +5,9 @@
 
     <div class="logo-container">
       <NuxtLink :to="{ name: 'bridge' }">
-        <IconsZkSync class="logo-icon" />
+        <IconsAbstractWordmark class="logo-icon" />
       </NuxtLink>
-      <span class="beta-label">Beta</span>
+      <!-- <span class="beta-label">Beta</span> -->
     </div>
     <div class="links-container">
       <NuxtLink
@@ -94,7 +94,7 @@ const { selectedColorMode, switchColorMode } = useColorMode();
 
 <style lang="scss" scoped>
 .header {
-  @apply z-50 flex w-full items-center gap-2 p-2 sm:gap-10 sm:p-4;
+  @apply z-50 flex w-full items-center gap-2 border-b border-black bg-neutral-100 p-2 dark:border-white dark:bg-primary-800 sm:gap-10 sm:p-4;
 
   .logo-container {
     @apply flex w-full flex-shrink items-center gap-2 sm:w-max;

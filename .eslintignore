@@ -7,4 +7,3 @@ node_modules
 .output
 dist
 tests
-tailwind.config.js

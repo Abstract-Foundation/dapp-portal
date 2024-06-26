@@ -60,7 +60,7 @@ const buttonClicked = (network: ZkSyncNetwork) => {
   @apply relative;
 
   .network-options-container {
-    @apply absolute right-0 top-full z-10 mt-0.5 h-max w-max min-w-full rounded-3xl bg-neutral-100 p-1 shadow-lg dark:bg-neutral-900;
+    @apply absolute right-0 top-full z-10 mt-0.5 h-max w-max min-w-full rounded-3xl bg-neutral-200 p-1 shadow-lg dark:bg-neutral-900;
 
     .options-item {
       @apply w-full;

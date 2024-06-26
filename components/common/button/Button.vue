@@ -38,12 +38,12 @@ defineProps({
       @apply rounded-[20px] p-3;
     }
     &md {
-      @apply rounded-3xl p-4;
+      @apply rounded-full p-4;
     }
   }
   &.variant- {
     &default {
-      @apply bg-neutral-100 dark:bg-neutral-900;
+      @apply bg-neutral-200 dark:bg-neutral-900;
       &:enabled,
       &:is(a, label) {
         &:not([aria-disabled="true"]) {
@@ -61,16 +61,16 @@ defineProps({
       }
     }
     &primary {
-      @apply bg-primary-400 px-6 text-white;
+      @apply border border-primary-300 bg-primary-300 px-6 text-black;
       &:enabled,
       &:is(a, label) {
         &:not([aria-disabled="true"]) {
-          @apply hover:bg-primary-300;
+          @apply hover:bg-white;
         }
       }
       &:disabled,
       &[aria-disabled="true"] {
-        @apply bg-opacity-50 dark:bg-neutral-800 dark:bg-opacity-50;
+        @apply border border-neutral-700 bg-opacity-50 text-neutral-700 dark:bg-neutral-800 dark:bg-opacity-50;
       }
     }
     &error {

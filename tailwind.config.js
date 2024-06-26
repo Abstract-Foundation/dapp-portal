@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require("tailwindcss/defaultTheme");
-const plugin = require("tailwindcss/plugin");
+import defaultTheme from "tailwindcss/defaultTheme";
+import plugin from "tailwindcss/plugin";
 
 module.exports = {
   darkMode: "class",
@@ -21,12 +21,13 @@ module.exports = {
       },
       colors: {
         primary: {
-          300: "#4075FF",
+          300: "#00DE73",
           400: "#1755F4",
           700: "#1347CC",
+          800: "#05472A",
         },
         neutral: {
-          50: "#F7F9FC",
+          50: "#F7F9F3",
           100: "#E8ECF2",
           200: "#DADDE5",
           300: "#BEC2CC",
