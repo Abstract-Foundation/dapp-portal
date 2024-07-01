@@ -85,7 +85,7 @@ const continueInWalletTipDisplayed = computed(() => {
 
 <style lang="scss" scoped>
 .transaction-footer {
-  @apply sticky bottom-0 z-10 flex flex-col items-center bg-neutral-50/60 bg-opacity-60 pb-2 pt-4 backdrop-blur-sm dark:bg-black dark:bg-opacity-60;
+  @apply sticky bottom-0 z-10 flex flex-col items-center pb-2 pt-4;
 
   .transaction-footer-row {
     @apply flex w-full flex-col items-center;
