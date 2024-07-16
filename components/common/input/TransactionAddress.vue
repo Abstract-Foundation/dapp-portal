@@ -2,11 +2,11 @@
   <CommonContentBlock for="transaction-address-input" as="label" class="transaction-address-input">
     <div class="flex flex-wrap items-center justify-between gap-4">
       <div class="flex items-center gap-2 overflow-hidden">
-        <div class="font-bold">{{ label }}</div>
+        <div class="b2">{{ label }}</div>
         <slot name="dropdown" />
       </div>
       <div v-if="!addressInputHidden && defaultLabel && isConnected">
-        <span class="font-bold">{{ inputVisible ? "To another account" : defaultLabel }}</span>
+        <span class="b2">{{ inputVisible ? "To another account" : defaultLabel }}</span>
         <CommonButtonLabel variant="light" class="ml-1" @click="toggleCustomValue()">
           {{ inputVisible ? "Use my account" : "Change" }}
         </CommonButtonLabel>

@@ -3,83 +3,61 @@
     <HeaderMobileMainNavigation v-model:opened="mobileMainNavigationOpened" />
     <HeaderMobileAccountNavigation v-model:opened="mobileAccountNavigationOpened" />
 
-    <div class="logo-container">
-      <NuxtLink :to="{ name: 'bridge' }">
-        <IconsAbstractWordmark class="logo-icon" />
-      </NuxtLink>
-      <!-- <span class="beta-label">Beta</span> -->
-    </div>
-    <div class="links-container">
-      <NuxtLink
-        class="link-item"
-        :to="{ name: 'bridge' }"
-        :class="{ 'router-link-exact-active': routes.bridge.includes(route.name?.toString() || '') }"
-      >
-        <ArrowsUpDownIcon class="link-icon" aria-hidden="true" />
-        Bridge
-      </NuxtLink>
-      <NuxtLink
-        class="link-item"
-        :to="{ name: 'assets' }"
-        :class="{ 'router-link-exact-active': routes.assets.includes(route.name?.toString() || '') }"
-      >
-        <WalletIcon class="link-icon" aria-hidden="true" />
-        Assets
-      </NuxtLink>
-      <NuxtLink class="link-item" :to="{ name: 'transfers' }">
-        <ArrowsRightLeftIcon class="link-icon" aria-hidden="true" />
-        Transfers
-        <transition v-bind="TransitionOpacity()">
-          <CommonBadge v-if="withdrawalsAvailableForClaiming.length">
-            {{ withdrawalsAvailableForClaiming.length }}
-          </CommonBadge>
-        </transition>
-      </NuxtLink>
-    </div>
-    <div class="right-side">
-      <HeaderNetworkDropdown class="network-dropdown" />
-      <CommonButton v-if="!isConnected" variant="primary" @click="onboardStore.openModal()">
-        <span class="whitespace-nowrap">Connect wallet</span>
-      </CommonButton>
-      <template v-else>
-        <div class="sm:hidden">
-          <HeaderAccountDropdownButton no-chevron @click="mobileAccountNavigationOpened = true" />
-        </div>
-        <div class="hidden sm:block">
-          <HeaderAccountDropdown />
-        </div>
-      </template>
-      <CommonButton class="color-mode-button" @click="switchColorMode()">
-        <SunIcon v-if="selectedColorMode === 'dark'" class="h-6 w-6" aria-hidden="true" />
-        <MoonIcon v-else class="h-6 w-6" aria-hidden="true" />
-      </CommonButton>
-      <CommonButton class="hamburger-icon" @click="mobileMainNavigationOpened = true">
-        <Bars3Icon class="h-6 w-6" aria-hidden="true" />
-        <transition v-bind="TransitionOpacity()">
-          <CommonBadge v-if="withdrawalsAvailableForClaiming.length" class="action-available-badge">
-            {{ withdrawalsAvailableForClaiming.length }}
-          </CommonBadge>
-        </transition>
-      </CommonButton>
+    <div class="header-inner">
+      <div class="links-container">
+        <NuxtLink :to="{ name: 'bridge' }">
+          <ABSButton :active="routes.bridge.includes(route?.name?.toString())" mono>Bridge</ABSButton>
+        </NuxtLink>
+
+        <NuxtLink :to="{ name: 'assets' }">
+          <ABSButton :active="routes.assets.includes(route?.name?.toString())" mono>Assets</ABSButton>
+        </NuxtLink>
+
+        <NuxtLink :to="{ name: 'transfers' }">
+          <ABSButton :active="routes.transfers.includes(route?.name?.toString())" mono>Transfers</ABSButton>
+        </NuxtLink>
+      </div>
+
+      <div class="right-side">
+        <HeaderNetworkDropdown class="network-dropdown" />
+
+        <ABSButton v-if="!isConnected" icon="wallet" @click="onboardStore.openModal()">
+          <span class="whitespace-nowrap">Connect wallet</span>
+        </ABSButton>
+
+        <template v-else>
+          <div class="sm:hidden">
+            <HeaderAccountDropdownButton no-chevron @click="mobileAccountNavigationOpened = true" />
+          </div>
+          <div class="hidden sm:block">
+            <HeaderAccountDropdown />
+          </div>
+        </template>
+
+        <CommonButton class="hamburger-icon" @click="mobileMainNavigationOpened = true">
+          <Bars3Icon class="h-6 w-6" aria-hidden="true" />
+          <transition v-bind="TransitionOpacity()">
+            <CommonBadge v-if="withdrawalsAvailableForClaiming.length" class="action-available-badge">
+              {{ withdrawalsAvailableForClaiming.length }}
+            </CommonBadge>
+          </transition>
+        </CommonButton>
+      </div>
     </div>
   </header>
 </template>
 
 <script lang="ts" setup>
-import {
-  ArrowsRightLeftIcon,
-  ArrowsUpDownIcon,
-  Bars3Icon,
-  MoonIcon,
-  SunIcon,
-  WalletIcon,
-} from "@heroicons/vue/24/outline";
+import { Bars3Icon } from "@heroicons/vue/24/outline";
+
+import ABSButton from "@/components/common/button/ABSButton.vue";
 
 const route = useRoute();
 
 const routes = {
   bridge: ["bridge", "bridge-withdraw"],
   assets: ["assets", "balances", "receive-methods", "receive", "send-methods", "send"],
+  transfers: ["transfers"],
 };
 
 const onboardStore = useOnboardStore();
@@ -88,13 +66,21 @@ const { withdrawalsAvailableForClaiming } = storeToRefs(useZkSyncWithdrawalsStor
 
 const mobileMainNavigationOpened = ref(false);
 const mobileAccountNavigationOpened = ref(false);
-
-const { selectedColorMode, switchColorMode } = useColorMode();
 </script>
 
 <style lang="scss" scoped>
 .header {
-  @apply z-50 flex w-full items-center gap-2 border-b border-black bg-neutral-100 p-2 dark:border-white dark:bg-primary-800 sm:gap-10 sm:p-4;
+  @apply z-50 mb-12 ml-auto mr-auto flex w-full max-w-[600px] items-center rounded-full bg-white p-2;
+
+  @media screen and (min-width: 1024px) {
+    @apply max-w-none;
+  }
+
+  .header-inner {
+    @apply relative flex w-full justify-between;
+
+    max-width: 1440px;
+  }
 
   .logo-container {
     @apply flex w-full flex-shrink items-center gap-2 sm:w-max;
@@ -106,7 +92,7 @@ const { selectedColorMode, switchColorMode } = useColorMode();
     }
   }
   .links-container {
-    @apply hidden items-center gap-10 lg:flex;
+    @apply hidden items-center gap-2 lg:flex;
 
     .link-item {
       @apply flex items-center gap-1 text-lg text-neutral-600 dark:text-neutral-500;
@@ -124,7 +110,7 @@ const { selectedColorMode, switchColorMode } = useColorMode();
     }
   }
   .right-side {
-    @apply ml-auto flex items-center gap-1 sm:gap-3;
+    @apply ml-auto flex items-center gap-2;
 
     .network-dropdown,
     .color-mode-button {

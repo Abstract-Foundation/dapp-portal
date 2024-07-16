@@ -1,5 +1,5 @@
 <template>
-  <CommonContentBlock>
+  <CommonContentBlock variant="unpadded">
     <CommonLineButtonsGroup>
       <slot />
     </CommonLineButtonsGroup>

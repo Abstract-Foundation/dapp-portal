@@ -12,25 +12,25 @@
     </transition>
 
     <div v-if="buttonStep === 'connect'" class="transaction-footer-row">
-      <CommonButton variant="primary" :disabled="isConnectingWallet" class="w-full" @click="onboardStore.openModal">
+      <ABSButton :disabled="isConnectingWallet" class="w-full" icon="wallet" @click="onboardStore.openModal">
         Connect wallet
-      </CommonButton>
+      </ABSButton>
     </div>
     <div v-if="buttonStep === 'network'" class="transaction-footer-row">
       <CommonButtonTopInfo>Incorrect network selected in your wallet</CommonButtonTopInfo>
-      <CommonButton
+      <ABSButton
         v-if="connectorName !== 'WalletConnect'"
         type="submit"
         :disabled="switchingNetworkInProgress"
-        variant="primary"
         class="w-full"
+        mono
         @click="eraWalletStore.setCorrectNetwork"
       >
         Change wallet network to {{ eraNetwork.name }}
-      </CommonButton>
-      <CommonButton v-else disabled variant="primary" class="w-full">
+      </ABSButton>
+      <ABSButton v-else disabled class="w-full" mono>
         Change network manually to {{ eraNetwork.name }} in your {{ walletName }} wallet
-      </CommonButton>
+      </ABSButton>
     </div>
     <div v-else-if="buttonStep === 'continue'" class="transaction-footer-row">
       <slot name="after-checks" />
@@ -41,6 +41,8 @@
 </template>
 
 <script lang="ts" setup>
+import ABSButton from "@/components/common/button/ABSButton.vue";
+
 const onboardStore = useOnboardStore();
 const eraWalletStore = useZkSyncWalletStore();
 
@@ -68,7 +70,7 @@ const continueInWalletTipDisplayed = computed(() => {
 
 <style lang="scss" scoped>
 .transaction-footer {
-  @apply sticky bottom-0 z-10 flex flex-col items-center bg-neutral-50/60 bg-opacity-60 pb-2 pt-4 backdrop-blur-sm dark:bg-black dark:bg-opacity-60;
+  @apply sticky bottom-0 z-10 flex flex-col items-center pb-2 pt-4;
 
   .transaction-footer-row {
     @apply flex w-full flex-col items-center;

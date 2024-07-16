@@ -14,7 +14,7 @@
     <CommonContentBlock for="transaction-amount-input" as="label">
       <div class="flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center gap-2 overflow-hidden">
-          <div class="font-bold">{{ label }}</div>
+          <div class="b2">{{ label }}</div>
           <slot name="dropdown" />
         </div>
         <transition v-bind="TransitionOpacity()">

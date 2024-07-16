@@ -1,8 +1,11 @@
 <template>
   <div class="page-title">
     <PageBackButton v-if="fallbackRoute" :fallback="fallbackRoute" />
-    <CommonButtonBack v-else-if="backFunction" @click="backFunction()" />
-    <h1 class="title">
+    <div v-else-if="backFunction" class="back-button">
+      <CommonButtonBack @click="backFunction()" />
+    </div>
+
+    <h1 class="h1">
       <slot />
     </h1>
   </div>
@@ -22,11 +25,10 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
+.back-button {
+  @apply mt-1;
+}
 .page-title {
-  @apply mb-block-gap-2/3 flex items-start gap-4 sm:mb-block-gap;
-
-  .title {
-    @apply h1 my-auto inline;
-  }
+  @apply relative mb-5 flex items-center gap-4;
 }
 </style>

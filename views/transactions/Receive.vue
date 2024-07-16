@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CommonAlert variant="warning" :icon="ExclamationTriangleIcon" class="mb-block-padding-1/2 sm:mb-block-gap">
+    <CommonAlert variant="warning" :icon="ExclamationTriangleIcon" class="my-block-padding-1/2 sm:mb-block-gap">
       <p>
         Please ensure funds to be sent from an account on
         <span class="font-medium">{{ eraNetwork.name }}</span

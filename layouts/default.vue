@@ -5,16 +5,20 @@
     <ModalNetworkChangedWarning v-if="!isConnectingWallet" />
     <ModalLegalNotice />
 
-    <Header />
     <main class="app-layout-main">
-      <NuxtPage />
+      <div class="container">
+        <div class="sidebar hidden lg:block">
+          <CommonSidebar />
+        </div>
+
+        <div class="content">
+          <Header />
+          <NuxtPage />
+        </div>
+      </div>
     </main>
 
-    <div class="pattern-background">
-      <CommonPatternCanvas />
-    </div>
-
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -24,18 +28,53 @@ const { isConnectingWallet } = storeToRefs(useOnboardStore());
 
 <style lang="scss" scoped>
 .app-layout {
-  @apply grid;
   min-height: 100vh;
   min-height: 100dvh;
-  grid-template-rows: auto 1fr max-content;
+  background: #f3f2ee;
+  color: #000000;
 
   .app-layout-main {
-    @apply relative z-10 flex min-h-0 w-full min-w-0 max-w-[700px] flex-col justify-self-center p-2 md:px-0 md:py-4;
+    @apply relative z-10 w-full flex-col justify-self-center p-2 md:px-0 md:py-4;
   }
-}
 
-.pattern-background {
-  @apply pointer-events-none fixed inset-0;
-  background-color: var(--color-background);
+  .container {
+    width: calc(100% - 2rem);
+    display: grid;
+    margin: 0 auto;
+    gap: 0 0.5rem;
+    grid-template-columns: repeat(8, 1fr);
+
+    @media only screen and (min-width: 768px) {
+      width: calc(100% - 3rem);
+    }
+
+    @media only screen and (min-width: 1024px) {
+      grid-template-columns: repeat(12, 1fr);
+      width: calc(100% - 5rem);
+      max-width: 1440px;
+      gap: 0 0.75rem;
+      padding-top: 120px;
+    }
+  }
+
+  .sidebar {
+    grid-column: 1 / -1;
+
+    @media only screen and (min-width: 1024px) {
+      grid-column: span 3 / span 3;
+    }
+  }
+
+  .content {
+    grid-column: 1 / -1;
+
+    @media only screen and (min-width: 1024px) {
+      grid-column: 5 / span 8;
+    }
+
+    @media only screen and (min-width: 1440px) {
+      grid-column: 6 / span 7;
+    }
+  }
 }
 </style>

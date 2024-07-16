@@ -11,7 +11,7 @@ defineProps({
     default: "button",
   },
   variant: {
-    type: String as PropType<"default" | "light" | "primary">,
+    type: String as PropType<"default" | "primary">,
     default: "default",
   },
   size: {
@@ -23,7 +23,8 @@ defineProps({
 
 <style lang="scss" scoped>
 .line-button-container {
-  @apply w-full rounded-[1.24rem] px-block-padding-1/4 transition-colors sm:px-block-padding-1/2;
+  @apply w-full rounded-[1.24rem] py-2 transition-colors;
+
   &:enabled,
   &:is(a) {
     &:not([aria-disabled="true"]) {
@@ -35,42 +36,24 @@ defineProps({
     @apply cursor-not-allowed opacity-75;
   }
 
-  &.size- {
-    &md {
-      @apply py-block-padding-1/2;
-    }
-    &sm {
-      @apply py-block-padding-1/4;
-    }
-  }
   &.variant- {
-    &default {
-      @apply bg-neutral-100 dark:bg-neutral-900;
-
-      &:enabled,
-      &:is(a) {
-        &:not([aria-disabled="true"]) {
-          @apply hover:bg-white dark:hover:bg-neutral-800;
-        }
-      }
-    }
-    &light {
-      @apply bg-neutral-50 dark:bg-neutral-900;
-
-      &:enabled,
-      &:is(a) {
-        &:not([aria-disabled="true"]) {
-          @apply hover:bg-white dark:hover:bg-neutral-800;
-        }
-      }
-    }
     &primary {
-      @apply bg-primary-400;
+      @apply bg-primary-800;
 
       &:enabled,
       &:is(a) {
         &:not([aria-disabled="true"]) {
-          @apply hover:bg-primary-300;
+          @apply hover:bg-primary-400;
+        }
+      }
+    }
+    &default {
+      @apply w-full;
+
+      &:enabled,
+      &:is(a) {
+        &:not([aria-disabled="true"]) {
+          @apply hover:bg-mono-100;
         }
       }
     }

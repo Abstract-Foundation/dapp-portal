@@ -31,7 +31,11 @@ defineProps({
 
 <style lang="scss" scoped>
 .line-button-with-img {
-  @apply flex items-center gap-4;
+  @apply flex items-center gap-4 border px-2;
+
+  &:hover {
+    @apply bg-neutral-950/10 dark:bg-neutral-950/10;
+  }
 
   .line-button-with-img-image {
     @apply my-[1.5px] aspect-square h-auto w-12 flex-none self-start;

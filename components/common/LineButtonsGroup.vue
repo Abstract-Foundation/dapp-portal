@@ -1,5 +1,5 @@
 <template>
-  <div class="line-buttons-group" :class="{ 'has-margin-x': marginX, 'has-margin-y': marginY, 'has-gap': gap }">
+  <div class="line-buttons-group">
     <slot />
   </div>
 </template>
@@ -23,14 +23,8 @@ defineProps({
 
 <style lang="scss" scoped>
 .line-buttons-group {
-  &.has-margin-x {
-    @apply -mx-block-padding-1/4 sm:-mx-block-padding-1/2;
-  }
-  &.has-margin-y {
-    @apply -my-block-padding-1/2;
-  }
-  &.has-gap {
-    @apply space-y-block-padding-1/2;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem 0;
 }
 </style>

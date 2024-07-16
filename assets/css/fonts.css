@@ -1,0 +1,152 @@
+/* // fonts // */
+
+@font-face {
+  font-family: "Roobert";
+  src: url("/fonts/Roobert-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Roobert";
+  src: url("/fonts/Roobert-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Roobert";
+  src: url("/fonts/Roobert-SemiBold.ttf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Roobert";
+  src: url("/fonts/Roobert-Bold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Roobert";
+  src: url("/fonts/Roobert-Heavy.ttf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: "Roobert";
+  src: url("/fonts/Roobert-Light.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "AvenueMono";
+  src: url("/fonts/AvenueMono.ttf");
+  font-weight: 400;
+}
+
+/* // typography // */
+
+.d1 {
+  font-family: "Roobert";
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+}
+
+.h1 {
+  font-family: "Roobert";
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+}
+
+.h2 {
+  font-family: "Roobert";
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+}
+
+.h3 {
+  font-family: "Roobert";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+}
+
+.h4 {
+  font-family: "Roobert";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+}
+
+.h5 {
+  font-family: "AvenueMono";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.h6 {
+  font-family: "AvenueMono";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.b1 {
+  font-family: "Roobert";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.02em;
+}
+
+.b2 {
+  font-family: "Roobert";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+}
+
+.b3 {
+  font-family: "Roobert";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.03em;
+}
+
+.button {
+  font-family: "Roobert";
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.caption {
+  font-family: "AvenueMono";
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 1024px) {
+  .d1 {
+    font-family: "Roobert";
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+  }
+}

@@ -3,9 +3,9 @@
     <CommonContentLoader />
   </div>
   <div v-else class="total-balance">
-    <span class="currency-symbol">{{ total.currencySymbol }}</span>
-    <span class="total-integer">{{ total.integer }}</span>
-    <span class="total-decimal" :class="{ 'opacity-70': total.decimal === '00' }">.{{ total.decimal }}</span>
+    <span class="currency-symbol h1">{{ total.currencySymbol }}</span>
+    <span class="total-integer d1">{{ total.integer }}</span>
+    <span class="total-decimal h1" :class="{ 'opacity-70': total.decimal === '00' }">.{{ total.decimal }}</span>
   </div>
 </template>
 
@@ -42,13 +42,4 @@ const total = computed(() => {
 });
 </script>
 
-<style lang="scss" scoped>
-.total-balance {
-  @apply text-6xl;
-
-  .currency-symbol,
-  .total-decimal {
-    @apply text-3xl;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

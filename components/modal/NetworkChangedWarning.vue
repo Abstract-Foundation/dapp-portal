@@ -1,12 +1,12 @@
 <template>
   <CommonModal v-model:opened="modalOpened" title="Network switched" @after-leave="afterModalLeave">
-    <p class="leading-normal">
+    <p class="caption">
       The selected network has been automatically changed
       <span v-if="lastSelectedNetwork"
-        >from <span class="font-medium">{{ lastSelectedNetwork.name }}</span>
+        >from <span>{{ lastSelectedNetwork.name }}</span>
       </span>
       to
-      <span class="font-medium">{{ selectedNetwork.name }}</span> since your last use of zkSync Portal.
+      <span>{{ selectedNetwork.name }}</span> since your last use of zkSync Portal.
     </p>
     <TypographyCategoryLabel class="-mb-2.5">Optional settings</TypographyCategoryLabel>
     <CommonCheckbox v-model="doNotSwitchNetwork">Do not switch network automatically</CommonCheckbox>

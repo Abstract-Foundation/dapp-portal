@@ -11,7 +11,7 @@ defineProps({
     default: "div",
   },
   variant: {
-    type: String as PropType<"default" | "primary">,
+    type: String as PropType<"default" | "unpadded">,
     default: "default",
   },
 });
@@ -19,14 +19,10 @@ defineProps({
 
 <style lang="scss" scoped>
 .content-block-container {
-  @apply block h-max w-full rounded-3xl px-block-padding-1/2 py-block-padding sm:px-block-padding;
-  &.variant- {
-    &default {
-      @apply bg-neutral-100 dark:bg-neutral-900;
-    }
-    &primary {
-      @apply bg-primary-400;
-    }
+  @apply block h-max w-full rounded-3xl bg-white p-6;
+
+  &.variant-unpadded {
+    @apply p-0;
   }
 }
 </style>

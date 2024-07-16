@@ -10,59 +10,45 @@
     <transition v-bind="TransitionAlertScaleInOutTransition">
       <MenuItems class="account-options-container">
         <MenuItem v-slot="{ active }" as="template">
-          <CommonButtonDropdown size="sm" no-chevron :active="active" class="options-item" @click="copy()">
-            <template #left-icon>
-              <DocumentDuplicateIcon aria-hidden="true" />
-            </template>
-            <span>Copy address</span>
-          </CommonButtonDropdown>
+          <ABSButton :active="active" inline mono @click="copy()">
+            <div class="button-inner">
+              <DocumentDuplicateIcon aria-hidden="true" class="w-5" />
+              <span>Copy address</span>
+            </div>
+          </ABSButton>
         </MenuItem>
+
         <MenuItem v-if="selectedNetwork.blockExplorerUrl" v-slot="{ active }" as="template">
-          <CommonButtonDropdown
-            size="sm"
-            no-chevron
-            :active="active"
-            as="a"
+          <ABSButton
             :href="`${selectedNetwork.blockExplorerUrl}/address/${account.address!}`"
-            target="_blank"
-            class="options-item"
-          >
-            <template #left-icon>
-              <Squares2X2Icon aria-hidden="true" />
-            </template>
-            <span>Explorer</span>
-            <template #right-icon>
-              <ArrowTopRightOnSquareIcon aria-hidden="true" />
-            </template>
-          </CommonButtonDropdown>
-        </MenuItem>
-        <MenuItem v-slot="{ active }" as="template">
-          <CommonButtonDropdown
-            size="sm"
-            no-chevron
             :active="active"
-            class="options-item"
-            @click="helpModalOpened = true"
+            inline
+            mono
+            new-tab
           >
-            <template #left-icon>
-              <ExclamationCircleIcon aria-hidden="true" />
-            </template>
-            <span>Help</span>
-          </CommonButtonDropdown>
+            <div class="button-inner">
+              <Squares2X2Icon aria-hidden="true" class="w-5" />
+              <span>Explorer</span>
+            </div>
+          </ABSButton>
         </MenuItem>
+
         <MenuItem v-slot="{ active }" as="template">
-          <CommonButtonDropdown
-            size="sm"
-            no-chevron
-            :active="active"
-            class="options-item"
-            @click="onboardStore.disconnect()"
-          >
-            <template #left-icon>
-              <PowerIcon aria-hidden="true" />
-            </template>
-            <span>Logout</span>
-          </CommonButtonDropdown>
+          <ABSButton :active="active" inline mono @click="helpModalOpened = true">
+            <div class="button-inner">
+              <ExclamationCircleIcon aria-hidden="true" class="w-5" />
+              <span>Help</span>
+            </div>
+          </ABSButton>
+        </MenuItem>
+
+        <MenuItem v-slot="{ active }" as="template">
+          <ABSButton :active="active" inline mono @click="onboardStore.disconnect()">
+            <div class="button-inner">
+              <PowerIcon aria-hidden="true" class="w-5" />
+              <span>Logout</span>
+            </div>
+          </ABSButton>
         </MenuItem>
       </MenuItems>
     </transition>
@@ -71,14 +57,10 @@
 
 <script lang="ts" setup>
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
-import {
-  ArrowTopRightOnSquareIcon,
-  DocumentDuplicateIcon,
-  ExclamationCircleIcon,
-  PowerIcon,
-  Squares2X2Icon,
-} from "@heroicons/vue/24/outline";
+import { DocumentDuplicateIcon, ExclamationCircleIcon, PowerIcon, Squares2X2Icon } from "@heroicons/vue/24/outline";
 import { useTippy } from "vue-tippy";
+
+import ABSButton from "@/components/common/button/ABSButton.vue";
 
 const onboardStore = useOnboardStore();
 const { account } = storeToRefs(onboardStore);
@@ -111,11 +93,17 @@ const helpModalOpened = ref(false);
   @apply relative;
 
   .account-options-container {
-    @apply absolute right-0 top-full z-10 mt-0.5 h-max w-max min-w-full rounded-3xl bg-neutral-100 p-1 shadow-lg dark:bg-neutral-900;
+    @apply absolute right-0 top-full z-10 mt-4 flex h-max w-max min-w-full flex-col items-start gap-y-2 rounded-[32px] bg-white p-2;
+
+    box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.1);
 
     .options-item {
       @apply w-full;
     }
+  }
+
+  .button-inner {
+    @apply relative flex gap-x-1;
   }
 }
 </style>

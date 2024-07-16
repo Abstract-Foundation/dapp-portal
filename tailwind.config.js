@@ -17,13 +17,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["'Inter'", ...defaultTheme.fontFamily.sans],
+        sans: ["'Roobert'", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         primary: {
-          300: "#00DE73",
-          400: "#1755F4",
-          700: "#1347CC",
+          300: "#09B5FF",
+          400: "#36F197",
+          700: "#00DE73",
           800: "#05472A",
         },
         neutral: {
@@ -44,6 +44,9 @@ module.exports = {
           secondary: "#75808a",
           input: "#edeff2",
           "input-focus": "#dfe3e7",
+        },
+        mono: {
+          100: "#d2d2d2",
         },
         error: {
           300: "#FF6666",
@@ -78,28 +81,7 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(function ({ addBase, addUtilities, theme }) {
-      addBase({
-        ".h1": {
-          fontSize: "36px",
-          fontWeight: "400",
-          lineHeight: "1.15",
-          marginBottom: theme("spacing.block-gap-2/3"),
-        },
-        "@screen sm": {
-          ".h1": {
-            fontSize: "40px",
-            lineHeight: "1.4",
-            marginBottom: theme("spacing.block-gap"),
-          },
-        },
-        ".h2": {
-          fontSize: "26px",
-          fontWeight: theme("fontWeight.bold"),
-          lineHeight: theme("lineHeight.tight"),
-          paddingTop: theme("padding.5"),
-        },
-      });
+    plugin(function ({ addUtilities }) {
       addUtilities({
         ".wrap-balance": {
           textWrap: "balance",

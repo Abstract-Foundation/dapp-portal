@@ -26,13 +26,20 @@ defineProps({
 
 <style lang="scss">
 .default-button {
-  @apply flex items-center justify-center text-center backdrop-blur-sm transition-colors wrap-balance;
+  @apply flex items-center justify-center border bg-neutral-200 text-center transition transition-colors wrap-balance disabled:opacity-70;
+
+  background: linear-gradient(180deg, #fdfdfd 0%, #f5f4f0 100%);
+  box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e2e0;
+  color: var(--color-dark-green);
+
   &:is(label) {
     @apply cursor-pointer;
   }
   &.size- {
     &xs {
-      @apply rounded-2xl px-4 py-2;
+      @apply rounded-[32px] px-4 py-2;
+      box-shadow: none;
     }
     &sm {
       @apply rounded-[20px] p-3;
@@ -41,48 +48,30 @@ defineProps({
       @apply rounded-full p-4;
     }
   }
+
+  &:enabled,
+  &:is(a, label) {
+    &:not([aria-disabled="true"]) {
+      @apply hover:bg-neutral-300;
+    }
+  }
+
   &.variant- {
-    &default {
-      @apply bg-neutral-200 dark:bg-neutral-900;
-      &:enabled,
-      &:is(a, label) {
-        &:not([aria-disabled="true"]) {
-          @apply hover:bg-neutral-200 dark:hover:bg-neutral-800 dark:focus-visible:bg-neutral-800;
-        }
-      }
-    }
-    &light {
-      @apply bg-neutral-200 transition disabled:opacity-70 dark:bg-neutral-800;
-      &:enabled,
-      &:is(a, label) {
-        &:not([aria-disabled="true"]) {
-          @apply hover:bg-neutral-300 dark:hover:bg-neutral-700 dark:focus-visible:bg-neutral-700;
-        }
-      }
-    }
     &primary {
-      @apply border border-primary-300 bg-primary-300 px-6 text-black;
-      &:enabled,
-      &:is(a, label) {
-        &:not([aria-disabled="true"]) {
-          @apply hover:bg-white;
-        }
-      }
-      &:disabled,
-      &[aria-disabled="true"] {
-        @apply border border-neutral-700 bg-opacity-50 text-neutral-700 dark:bg-neutral-800 dark:bg-opacity-50;
-      }
+      background: linear-gradient(180deg, #aaffd6 0%, #60f7af 100%);
     }
+
     &error {
-      @apply bg-red-100/50 text-red-400 dark:bg-red-700 dark:text-white;
+      @apply bg-red-100/50 text-red-400;
       &:enabled,
       &:is(a, label) {
         &:not([aria-disabled="true"]) {
-          @apply hover:bg-red-100/75 dark:hover:bg-red-600;
+          @apply hover:bg-red-100/75;
         }
       }
     }
   }
+
   .icon-container {
     @apply -ml-0.5 mr-2 inline-flex items-center;
 

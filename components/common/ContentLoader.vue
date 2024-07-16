@@ -22,6 +22,6 @@ defineProps({
 
 <style lang="scss" scoped>
 .content-loader {
-  @apply rounded-xl bg-neutral-50 dark:bg-neutral-700;
+  @apply rounded-xl bg-neutral-50;
 }
 </style>

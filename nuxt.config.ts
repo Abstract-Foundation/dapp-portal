@@ -7,12 +7,6 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "en",
       },
-      link: [
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
-        },
-      ],
       meta: [
         {
           property: "og:image",
@@ -56,7 +50,12 @@ export default defineNuxtConfig({
     "@nuxtjs/eslint-module", // https://nuxt.com/modules/eslint
     "@nuxtjs/tailwindcss", // https://nuxt.com/modules/tailwindcss
   ],
-  css: ["@/assets/css/tailwind.css", "@/assets/css/style.scss", "web3-avatar-vue/dist/style.css"],
+  css: [
+    "@/assets/css/tailwind.css",
+    "@/assets/css/style.scss",
+    "web3-avatar-vue/dist/style.css",
+    "@/assets/css/fonts.css",
+  ],
   ssr: false,
   pinia: {
     storesDirs: ["./store/**"],

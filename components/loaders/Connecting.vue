@@ -19,7 +19,7 @@
           fill="currentFill"
         />
       </svg>
-      <span class="sr-only">Loading...</span>
+      <span class="d1 sr-only">Loading...</span>
     </div>
   </transition>
 </template>
@@ -29,7 +29,7 @@ const { account, isConnectingWallet, walletName } = storeToRefs(useOnboardStore(
 
 const title = computed(() => {
   if (walletName.value) {
-    return `Logging in with ${walletName.value}`;
+    return `Logging in with ${walletName.value}...`;
   }
   return "Loading...";
 });
@@ -37,6 +37,9 @@ const title = computed(() => {
 
 <style lang="scss" scoped>
 .connecting-container {
-  @apply absolute inset-0 z-[70] flex h-full w-full flex-col items-center justify-center bg-gray dark:bg-neutral-950;
+  @apply absolute inset-0 z-[70] flex h-full w-full flex-col items-center justify-center;
+
+  background: #f4f4f4;
+  color: var(--color-dark-green);
 }
 </style>

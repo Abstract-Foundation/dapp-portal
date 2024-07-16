@@ -2,7 +2,7 @@
   <CommonCardWithLineButtons
     class="bridge-from-ethereum-button"
     :class="{ 'animated-button': displayTotalTokens }"
-    variant="primary"
+    variant="unpadded"
   >
     <DestinationItem
       :icon-url="destinations.ethereum.iconUrl"
@@ -56,6 +56,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .bridge-from-ethereum-button {
   @apply relative isolate;
+
   &.animated-button::before {
     animation: button-blink-animation 1s ease forwards;
     @keyframes button-blink-animation {
