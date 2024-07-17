@@ -86,6 +86,15 @@ const isModalOpened = computed({
     emit("update:opened", value);
   },
 });
+
+watch(isModalOpened, (newVal) => {
+  if (newVal) {
+    window.parent.postMessage({ event: "modalOpened" }, "*");
+  } else {
+    window.parent.postMessage({ event: "modalClosed" }, "*");
+  }
+});
+
 const closeOnBackgroundClick = () => {
   if (props.closeOnBackgroundClick) {
     closeModal();
