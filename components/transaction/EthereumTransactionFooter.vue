@@ -16,8 +16,10 @@
         Connect wallet
       </ABSButton>
     </div>
+
     <div v-if="buttonStep === 'network'" class="transaction-footer-row">
       <CommonButtonTopInfo>Incorrect network selected in your wallet</CommonButtonTopInfo>
+
       <template v-if="l1Network">
         <ABSButton
           v-if="connectorName !== 'WalletConnect'"
@@ -41,6 +43,7 @@
         </CommonButton>
       </template>
     </div>
+
     <div v-else-if="buttonStep === 'continue'" class="transaction-footer-row">
       <slot name="after-checks" />
     </div>
@@ -87,7 +90,7 @@ const continueInWalletTipDisplayed = computed(() => {
   @apply sticky bottom-0 z-10 flex flex-col items-center;
 
   .transaction-footer-row {
-    @apply flex w-full flex-col items-center;
+    @apply mt-2 flex w-full flex-col items-center;
   }
 }
 </style>

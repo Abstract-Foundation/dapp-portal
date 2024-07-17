@@ -88,7 +88,7 @@
         <CommonInputTransactionAddress
           v-model="address"
           label="To"
-          :default-label="`To your account ${account.address ? shortenAddress(account.address) : ''}`"
+          :default-label="`To your account (${account.address ? shortenAddress(account.address) : ''}) `"
           :address-input-hidden="tokenCustomBridge?.bridgingDisabled"
         >
           <template #dropdown>

@@ -1,6 +1,6 @@
 <template>
   <CommonModal v-model:opened="modalOpened" title="Network switched" @after-leave="afterModalLeave">
-    <p class="caption">
+    <p class="b2">
       The selected network has been automatically changed
       <span v-if="lastSelectedNetwork"
         >from <span>{{ lastSelectedNetwork.name }}</span>
@@ -8,26 +8,27 @@
       to
       <span>{{ selectedNetwork.name }}</span> since your last use of zkSync Portal.
     </p>
-    <TypographyCategoryLabel class="-mb-2.5">Optional settings</TypographyCategoryLabel>
-    <CommonCheckbox v-model="doNotSwitchNetwork">Do not switch network automatically</CommonCheckbox>
-    <CommonCheckbox v-model="warningDisabled" class="mt-1">Do not show this warning</CommonCheckbox>
+    <TypographyCategoryLabel class="b2">Optional settings</TypographyCategoryLabel>
+    <CommonCheckbox v-model="doNotSwitchNetwork" class="b3">Do not switch network automatically</CommonCheckbox>
+    <CommonCheckbox v-model="warningDisabled" class="b3">Do not show this warning</CommonCheckbox>
     <div class="mt-4 flex flex-col items-center">
       <CommonButtonTopLink
         v-if="lastSelectedNetwork"
         as="a"
+        class="b3"
         :href="getNetworkUrl(lastSelectedNetwork, route.fullPath)"
         @click="setCheckboxValues"
       >
         Return to {{ lastSelectedNetwork?.name }}
       </CommonButtonTopLink>
-      <CommonButton variant="primary" class="w-full" @click="closeModal">
-        Continue on {{ selectedNetwork.name }}
-      </CommonButton>
+      <ABSButton @click="closeModal"> Continue on {{ selectedNetwork.name }} </ABSButton>
     </div>
   </CommonModal>
 </template>
 
 <script lang="ts" setup>
+import ABSButton from "@/components/common/button/ABSButton.vue";
+
 const networkStore = useNetworkStore();
 const {
   selectedNetwork,

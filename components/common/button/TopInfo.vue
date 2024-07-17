@@ -1,5 +1,5 @@
 <template>
-  <component :is="as" class="button-top-info">
+  <component :is="as" class="button-top-info b2">
     <slot />
   </component>
 </template>
@@ -15,6 +15,6 @@ defineProps({
 
 <style lang="scss" scoped>
 .button-top-info {
-  @apply mx-auto mb-2 flex w-full items-center justify-center text-center text-sm text-gray-secondary wrap-balance dark:text-neutral-400;
+  @apply mx-auto mb-3 flex w-full items-center justify-center text-center text-gray-secondary wrap-balance;
 }
 </style>

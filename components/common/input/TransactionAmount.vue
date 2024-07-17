@@ -20,7 +20,7 @@
         <transition v-bind="TransitionOpacity()">
           <template v-if="displayedMaxAmount && displayedMaxAmount !== '0'">
             <span>
-              <CommonButtonLabel variant="light" as="span">Max:&nbsp;</CommonButtonLabel>
+              <CommonButtonLabel as="span">Max:&nbsp;</CommonButtonLabel>
               <CommonButtonLabel
                 variant="light"
                 :class="{ 'is-max': isMaxAmountSet }"

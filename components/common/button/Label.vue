@@ -26,19 +26,20 @@ defineProps({
   @include interactiveStyles {
     @apply underline underline-offset-2 transition;
   }
-  &.variant- {
-    &default {
-      @apply text-neutral-600 dark:text-neutral-500;
-      @include interactiveStyles {
-        @apply hover:text-neutral-950 dark:hover:text-white;
-      }
-    }
-    &light {
-      @apply text-neutral-700 dark:text-neutral-400;
-      @include interactiveStyles {
-        @apply hover:text-neutral-950 dark:hover:text-white;
-      }
-    }
-  }
+
+  // &.variant- {
+  //   &default {
+  //     @apply text-neutral-600 dark:text-neutral-500;
+  //     @include interactiveStyles {
+  //       @apply hover:text-neutral-950 dark:hover:text-white;
+  //     }
+  //   }
+  //   &light {
+  //     @apply text-neutral-700 dark:text-neutral-400;
+  //     @include interactiveStyles {
+  //       @apply hover:text-neutral-950 dark:hover:text-white;
+  //     }
+  //   }
+  // }
 }
 </style>

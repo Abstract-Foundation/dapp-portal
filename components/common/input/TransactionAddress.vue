@@ -6,9 +6,9 @@
         <slot name="dropdown" />
       </div>
       <div v-if="!addressInputHidden && defaultLabel && isConnected">
-        <span class="b2">{{ inputVisible ? "To another account" : defaultLabel }}</span>
-        <CommonButtonLabel variant="light" class="ml-1" @click="toggleCustomValue()">
-          {{ inputVisible ? "Use my account" : "Change" }}
+        <span class="b2">{{ inputVisible ? "To another account " : defaultLabel }}</span>
+        <CommonButtonLabel variant="light" @click="toggleCustomValue()">
+          ({{ inputVisible ? "Use my account" : "Change" }})
         </CommonButtonLabel>
       </div>
     </div>

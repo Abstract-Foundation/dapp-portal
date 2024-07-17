@@ -31,7 +31,7 @@ defineProps({
   background: linear-gradient(180deg, #fdfdfd 0%, #f5f4f0 100%);
   box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.1);
   border: 1px solid #e2e2e0;
-  color: var(--color-dark-green);
+  color: #2fbf7a;
 
   &:is(label) {
     @apply cursor-pointer;
@@ -56,9 +56,20 @@ defineProps({
     }
   }
 
+  &:disabled {
+    opacity: 0.35;
+  }
+
   &.variant- {
     &primary {
       background: linear-gradient(180deg, #aaffd6 0%, #60f7af 100%);
+    }
+
+    &default {
+      @apply text-neutral-700;
+    }
+    &light {
+      @apply text-neutral-700;
     }
 
     &error {
