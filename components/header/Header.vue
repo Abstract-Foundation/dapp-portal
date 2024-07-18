@@ -21,18 +21,20 @@
       <div class="right-side">
         <HeaderNetworkDropdown class="network-dropdown" />
 
-        <ABSButton v-if="!isConnected" icon="wallet" @click="onboardStore.openModal()">
-          <span class="whitespace-nowrap">Connect wallet</span>
-        </ABSButton>
+        <div class="wallet-connect">
+          <ABSButton v-if="!isConnected" icon="wallet" @click="onboardStore.openModal()">
+            <span class="whitespace-nowrap">Connect wallet</span>
+          </ABSButton>
 
-        <template v-else>
-          <div class="sm:hidden">
-            <HeaderAccountDropdownButton no-chevron @click="mobileAccountNavigationOpened = true" />
-          </div>
-          <div class="hidden sm:block">
-            <HeaderAccountDropdown />
-          </div>
-        </template>
+          <template v-else>
+            <div class="sm:hidden">
+              <HeaderAccountDropdownButton no-chevron @click="mobileAccountNavigationOpened = true" />
+            </div>
+            <div class="hidden sm:block">
+              <HeaderAccountDropdown />
+            </div>
+          </template>
+        </div>
 
         <CommonButton class="hamburger-icon" @click="mobileMainNavigationOpened = true">
           <Bars3Icon class="h-6 w-6" aria-hidden="true" />
@@ -70,11 +72,7 @@ const mobileAccountNavigationOpened = ref(false);
 
 <style lang="scss" scoped>
 .header {
-  @apply z-50 mb-12 ml-auto mr-auto flex w-full max-w-[600px] items-center rounded-full bg-white p-2;
-
-  @media screen and (min-width: 1024px) {
-    @apply max-w-none;
-  }
+  @apply z-50 mb-12 ml-auto mr-auto flex w-full items-center rounded-full lg:bg-white lg:p-2;
 
   .header-inner {
     @apply relative flex w-full justify-between;
@@ -91,11 +89,17 @@ const mobileAccountNavigationOpened = ref(false);
       @apply block rounded-lg bg-neutral-100 p-2 text-xs font-normal uppercase leading-none dark:bg-neutral-900;
     }
   }
+
+  .wallet-connect {
+    @apply hidden lg:block;
+  }
+
   .links-container {
     @apply hidden items-center gap-2 lg:flex;
 
     .link-item {
       @apply flex items-center gap-1 text-lg text-neutral-600 dark:text-neutral-500;
+
       &.router-link-exact-active {
         @apply text-black dark:text-white;
 
@@ -109,15 +113,21 @@ const mobileAccountNavigationOpened = ref(false);
       }
     }
   }
+
   .right-side {
-    @apply ml-auto flex items-center gap-2;
+    @apply ml-auto mt-1 flex items-center gap-2;
+
+    @media only screen and (min-width: 1024px) {
+      @apply mt-0;
+    }
 
     .network-dropdown,
     .color-mode-button {
-      @apply hidden xl:block;
+      @apply hidden lg:block;
     }
+
     .hamburger-icon {
-      @apply relative xl:hidden;
+      @apply relative lg:hidden;
 
       .action-available-badge {
         @apply absolute -right-1 -top-1 lg:hidden;

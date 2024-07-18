@@ -124,7 +124,6 @@ watchEffect(() => {
 }
 
 .abs-button.inline {
-  width: auto;
   display: inline-block;
 }
 

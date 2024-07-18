@@ -3,11 +3,12 @@
     <transition v-bind="TabsTransition" mode="out-in">
       <div v-if="openedTab === 'main'">
         <TypographyCategoryLabel size="sm" :padded="false" class="mb-4">Network</TypographyCategoryLabel>
-        <CommonCardWithLineButtons>
+        <CommonCardWithLineButtons transparent>
           <DestinationItem
             :label="selectedNetwork.name"
             :icon="ChevronRightIcon"
             size="sm"
+            class="bg-white"
             @click="openedTab = 'network'"
           >
             <template #image>
@@ -19,22 +20,22 @@
         </CommonCardWithLineButtons>
 
         <TypographyCategoryLabel size="sm">Portal</TypographyCategoryLabel>
-        <CommonCardWithLineButtons>
-          <DestinationItem label="Bridge" as="RouterLink" :to="{ name: 'bridge' }" size="sm">
+        <CommonCardWithLineButtons transparent>
+          <DestinationItem label="Bridge" as="RouterLink" :to="{ name: 'bridge' }" size="sm" class="bg-white">
             <template #image>
               <DestinationIconContainer>
                 <ArrowsUpDownIcon aria-hidden="true" />
               </DestinationIconContainer>
             </template>
           </DestinationItem>
-          <DestinationItem label="Assets" as="RouterLink" :to="{ name: 'assets' }" size="sm">
+          <DestinationItem label="Assets" as="RouterLink" :to="{ name: 'assets' }" size="sm" class="bg-white">
             <template #image>
               <DestinationIconContainer>
                 <WalletIcon aria-hidden="true" />
               </DestinationIconContainer>
             </template>
           </DestinationItem>
-          <DestinationItem label="Transfers" as="RouterLink" :to="{ name: 'transfers' }" size="sm">
+          <DestinationItem label="Transfers" as="RouterLink" :to="{ name: 'transfers' }" size="sm" class="bg-white">
             <template #image>
               <DestinationIconContainer>
                 <ArrowsRightLeftIcon aria-hidden="true" />
@@ -50,35 +51,20 @@
             </template>
           </DestinationItem>
         </CommonCardWithLineButtons>
-
-        <TypographyCategoryLabel size="sm">Theme</TypographyCategoryLabel>
-        <CommonCardWithLineButtons>
-          <DestinationItem
-            :label="selectedColorMode === 'dark' ? 'Dark mode' : 'Light mode'"
-            size="sm"
-            @click="switchColorMode()"
-          >
-            <template #image>
-              <DestinationIconContainer>
-                <SunIcon v-if="selectedColorMode === 'dark'" aria-hidden="true" />
-                <MoonIcon v-else aria-hidden="true" />
-              </DestinationIconContainer>
-            </template>
-          </DestinationItem>
-        </CommonCardWithLineButtons>
       </div>
       <div v-else-if="openedTab === 'network'">
         <div class="mb-block-gap flex items-center gap-block-padding-1/2">
           <CommonButtonBack size="sm" @click="openedTab = 'main'" />
           <span class="text-lg">Choose network</span>
         </div>
-        <CommonCardWithLineButtons>
+        <CommonCardWithLineButtons transparent>
           <DestinationItem
             v-for="item in chainList.filter((e) => !e.hidden)"
             :key="item.key"
             :label="item.name"
             :icon="isNetworkSelected(item) ? CheckIcon : undefined"
             size="sm"
+            class="bg-white"
             @click="buttonClicked(item)"
           >
             <template #image>
@@ -99,8 +85,6 @@ import {
   ArrowsUpDownIcon,
   CheckIcon,
   ChevronRightIcon,
-  MoonIcon,
-  SunIcon,
   WalletIcon,
 } from "@heroicons/vue/24/outline";
 
@@ -141,7 +125,7 @@ watch(
   }
 );
 
-const { switchColorMode, selectedColorMode } = useColorMode();
+// const { switchColorMode, selectedColorMode } = useColorMode();
 
 const { selectedNetwork } = storeToRefs(useNetworkStore());
 const isNetworkSelected = (network: ZkSyncNetwork) => selectedNetwork.value.key === network.key;

@@ -10,7 +10,7 @@
     <transition v-bind="TransitionAlertScaleInOutTransition">
       <MenuItems class="account-options-container">
         <MenuItem v-slot="{ active }" as="template">
-          <ABSButton :active="active" inline mono @click="copy()">
+          <ABSButton :active="active" class-name="w-full" inline mono @click="copy()">
             <div class="button-inner">
               <DocumentDuplicateIcon aria-hidden="true" class="w-5" />
               <span>Copy address</span>
@@ -22,6 +22,7 @@
           <ABSButton
             :href="`${selectedNetwork.blockExplorerUrl}/address/${account.address!}`"
             :active="active"
+            class-name="w-full"
             inline
             mono
             new-tab
@@ -34,7 +35,7 @@
         </MenuItem>
 
         <MenuItem v-slot="{ active }" as="template">
-          <ABSButton :active="active" inline mono @click="helpModalOpened = true">
+          <ABSButton :active="active" class-name="w-full" inline mono @click="helpModalOpened = true">
             <div class="button-inner">
               <ExclamationCircleIcon aria-hidden="true" class="w-5" />
               <span>Help</span>
@@ -43,7 +44,7 @@
         </MenuItem>
 
         <MenuItem v-slot="{ active }" as="template">
-          <ABSButton :active="active" inline mono @click="onboardStore.disconnect()">
+          <ABSButton :active="active" class-name="w-full" inline mono @click="onboardStore.disconnect()">
             <div class="button-inner">
               <PowerIcon aria-hidden="true" class="w-5" />
               <span>Logout</span>

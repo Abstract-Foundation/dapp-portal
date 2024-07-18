@@ -12,7 +12,7 @@
     <transition v-bind="TransitionAlertScaleInOutTransition">
       <MenuItems class="network-options-container">
         <MenuItem v-for="item in chainList.filter((e) => !e.hidden)" :key="item.key" as="template">
-          <ABSButton inline mono @click="buttonClicked(item)">
+          <ABSButton class-name="w-full" inline mono @click="buttonClicked(item)">
             <div class="button-inner">
               <IconsEra class="w-5" />
               <span>{{ item.name }}</span>

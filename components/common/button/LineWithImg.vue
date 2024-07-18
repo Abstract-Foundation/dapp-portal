@@ -3,7 +3,7 @@
     <div class="line-button-with-img-image">
       <slot name="image" />
     </div>
-    <div class="line-button-with-img-body">
+    <div class="line-button-with-img-body b1">
       <slot />
     </div>
     <div v-if="$slots.right" class="line-button-with-img-right">

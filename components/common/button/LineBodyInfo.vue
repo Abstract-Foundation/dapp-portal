@@ -20,7 +20,7 @@
 
   .button-line-body-info-label,
   .button-line-body-info-secondary {
-    @apply inline min-h-[1.5rem] overflow-hidden text-ellipsis align-middle;
+    @apply inline min-h-[1.5rem] overflow-hidden text-ellipsis align-middle text-black;
   }
   .button-line-body-info-underline {
     @apply text-sm text-neutral-700 dark:text-neutral-400;

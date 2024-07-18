@@ -46,8 +46,8 @@ defineProps({
     @apply flex justify-between gap-block-gap-1/2;
   }
   &.variant- {
-    &darker {
-      @apply text-neutral-700 dark:text-neutral-400;
+    &default {
+      @apply text-black;
     }
   }
 }

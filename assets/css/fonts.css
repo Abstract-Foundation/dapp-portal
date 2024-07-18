@@ -46,7 +46,7 @@
 
 .d1 {
   font-family: "Roobert";
-  font-size: 32px;
+  font-size: 48px;
   font-weight: 500;
   line-height: 100%;
   letter-spacing: -0.02em;
@@ -139,14 +139,4 @@
   line-height: 100%;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-}
-
-@media only screen and (min-width: 1024px) {
-  .d1 {
-    font-family: "Roobert";
-    font-size: 48px;
-    font-weight: 500;
-    line-height: 100%;
-    letter-spacing: -0.02em;
-  }
 }

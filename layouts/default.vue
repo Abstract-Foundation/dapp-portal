@@ -28,16 +28,24 @@ const { isConnectingWallet } = storeToRefs(useOnboardStore());
 
 <style lang="scss" scoped>
 .app-layout {
+  @apply relative w-full;
+
   min-height: 100vh;
   min-height: 100dvh;
+  // padding-top: 6px;
   background: #f3f2ee;
   color: #000000;
 
+  @media only screen and (min-width: 1024px) {
+    padding-top: 0;
+  }
+
   .app-layout-main {
-    @apply relative z-10 w-full flex-col justify-self-center p-2 md:px-0 md:py-4;
+    @apply relative z-10 w-full flex-col justify-self-center lg:py-4;
   }
 
   .container {
+    max-width: none;
     width: calc(100% - 2rem);
     display: grid;
     margin: 0 auto;
