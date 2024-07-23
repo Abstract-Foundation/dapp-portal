@@ -1,6 +1,6 @@
 import { useStorage } from "@vueuse/core";
 import { decodeEventLog } from "viem";
-import ZkSyncContractInterface from "zksync-ethers/abi/IZkSync.json";
+import IZkSyncHyperchain from "zksync-ethers/abi/IZkSyncHyperchain.json";
 
 import type { FeeEstimationParams } from "@/composables/zksync/useFee";
 import type { TokenAmount, Hash } from "@/types";
@@ -30,14 +30,6 @@ export const useZkSyncTransactionStatusStore = defineStore("zkSyncTransactionSta
   const { account } = storeToRefs(onboardStore);
   const { eraNetwork } = storeToRefs(providerStore);
 
-  const failedTransaction = useStorage<TransactionInfo[]>("zksync-bridge-failed-transaction", []);
-  const addFailedTransaction = (transaction: TransactionInfo) => {
-    if (failedTransaction.value.some((tx) => tx.transactionHash === transaction.transactionHash)) {
-      return;
-    }
-    failedTransaction.value = [...failedTransaction.value, transaction];
-  };
-
   const storageSavedTransactions = useStorage<{ [networkKey: string]: TransactionInfo[] }>(
     "zksync-bridge-transactions",
     {}
@@ -66,7 +58,7 @@ export const useZkSyncTransactionStatusStore = defineStore("zkSyncTransactionSta
     for (const log of transaction.logs) {
       try {
         const { args, eventName } = decodeEventLog({
-          abi: ZkSyncContractInterface,
+          abi: IZkSyncHyperchain,
           data: log.data,
           topics: log.topics,
         });
@@ -96,7 +88,6 @@ export const useZkSyncTransactionStatusStore = defineStore("zkSyncTransactionSta
         transaction.info.withdrawalFinalizationAvailable = false;
         transaction.info.failed = true;
         transaction.info.completed = true;
-        addFailedTransaction(transaction);
         return transaction;
       }
       if (transactionDetails.status !== "verified") {
@@ -115,11 +106,10 @@ export const useZkSyncTransactionStatusStore = defineStore("zkSyncTransactionSta
     const transactionReceipt = await providerStore.requestProvider().getTransactionReceipt(transaction.transactionHash);
     if (!transactionReceipt) return transaction;
     const transactionDetails = await providerStore.requestProvider().getTransactionDetails(transaction.transactionHash);
-    transaction.info.completed = true;
     if (transactionDetails.status === "failed") {
       transaction.info.failed = true;
-      addFailedTransaction(transaction);
     }
+    transaction.info.completed = true;
     return transaction;
   };
   const waitForCompletion = async (transaction: TransactionInfo) => {
