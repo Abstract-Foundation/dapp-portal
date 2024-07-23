@@ -1,1 +1,48 @@
-[]
+[
+  {
+    "network": {
+      "id": 11124,
+      "name": "Abstract Testnet",
+      "key": "abstract-testnet",
+      "rpcUrl": "https://api.testnet.abs.xyz",
+      "blockExplorerUrl": "https://explorer.testnet.abs.xyz",
+      "l1Network": {
+        "id": 11155111,
+        "name": "Sepolia",
+        "nativeCurrency": {
+          "name": "Ether",
+          "symbol": "ETH",
+          "decimals": 18
+        },
+        "rpcUrls": {
+          "default": {
+            "http": [
+              "https://ethereum-sepolia-rpc.publicnode.com"
+            ]
+          },
+          "public": {
+            "http": [
+              "https://ethereum-sepolia-rpc.publicnode.com"
+            ]
+          }
+        },
+        "blockExplorers": {
+          "default": {
+            "name": "Sepolia",
+            "url": "https://sepolia.etherscan.io"
+          }
+        }
+      }
+    },
+    "tokens": [
+      {
+        "address": "0x000000000000000000000000000000000000800A",
+        "l1Address": "0x0000000000000000000000000000000000000000",
+        "symbol": "ETH",
+        "name": "Ether",
+        "decimals": 18,
+        "iconUrl": "/img/eth.svg"
+      }
+    ]
+  }
+]
