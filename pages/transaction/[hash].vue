@@ -5,7 +5,7 @@
     <WithdrawalSubmitted v-else-if="transaction.type === 'withdrawal'" :transaction="transaction" />
   </div>
   <div v-else>
-    <h1 class="h1 mt-block-gap-1/2 text-center">Transaction not found</h1>
+    <h1 class="h1 mb-8 mt-4 text-center">Transaction not found</h1>
     <p class="mb-block-gap text-center">
       The transaction you are looking for is not found. It is possible you submitted it from another browser or device.
     </p>

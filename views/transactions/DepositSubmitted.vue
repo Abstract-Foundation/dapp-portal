@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="h1 mt-block-gap-1/2 text-center">
+    <h1 class="h1 mb-8 mt-4 text-center">
       {{ transaction.info.completed ? "Transaction completed" : "Transaction submitted" }}
     </h1>
     <CommonHeightTransition :opened="!transaction.info.completed">
@@ -26,12 +26,12 @@
       :failed="transaction.info.failed"
     />
 
-    <EcosystemBlock v-if="eraNetwork.displaySettings?.showPartnerLinks" class="mt-block-gap" />
+    <!-- <EcosystemBlock v-if="eraNetwork.displaySettings?.showPartnerLinks" class="mt-block-gap" /> -->
     <CommonButton
       size="sm"
       :as="makeAnotherTransaction ? undefined : 'RouterLink'"
       :to="{ name: 'bridge' }"
-      class="mx-auto mt-block-gap w-max"
+      class="mx-auto mt-8 w-max sm:mt-10"
       @click="makeAnotherTransaction && makeAnotherTransaction()"
     >
       Make another transaction
@@ -52,5 +52,6 @@ defineProps({
 });
 
 const { l1BlockExplorerUrl } = storeToRefs(useNetworkStore());
-const { eraNetwork, blockExplorerUrl } = storeToRefs(useZkSyncProviderStore());
+// const { eraNetwork, blockExplorerUrl } = storeToRefs(useZkSyncProviderStore());
+const { blockExplorerUrl } = storeToRefs(useZkSyncProviderStore());
 </script>

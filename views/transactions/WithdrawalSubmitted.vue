@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="h1 mt-block-gap-1/2 text-center">
+    <h1 class="h1 mb-8 mt-4 text-center">
       {{ transaction.info.completed ? "Transaction completed" : "Transaction submitted" }}
     </h1>
     <CommonHeightTransition :opened="!transaction.info.completed">

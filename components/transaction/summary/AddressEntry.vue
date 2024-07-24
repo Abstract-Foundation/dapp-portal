@@ -1,6 +1,6 @@
 <template>
   <CommonButtonLine as="div" class="transaction-summary-address-entry">
-    <div class="entry-label">{{ label }}</div>
+    <div class="entry-label">{{ label }}:</div>
     <div class="entry-info">
       <div class="entry-text-info">
         <div class="account-label">{{ accountLabel }}</div>
@@ -55,11 +55,12 @@ const addressParts = computed<[string, string, string]>(() => {
 
 <style lang="scss" scoped>
 .transaction-summary-address-entry {
-  @apply flex items-center gap-4;
+  @apply flex items-start gap-4 p-4 md:items-center;
 
   .entry-label {
-    @apply font-bold;
+    font-weight: 500;
   }
+
   .entry-info {
     @apply ml-auto flex gap-4;
 

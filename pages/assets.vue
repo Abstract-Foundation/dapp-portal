@@ -8,11 +8,11 @@
     </template>
     <template v-else>
       <TransactionWithdrawalsAvailableForClaimAlert />
-      <EcosystemBlock
+      <!-- <EcosystemBlock
         v-if="eraNetwork.displaySettings?.showPartnerLinks && ecosystemBannerVisible"
         show-close-button
         class="mb-block-padding-1/2 sm:mb-block-gap"
-      />
+      /> -->
       <CommonContentBlock class="mb-block-gap">
         <div class="flex flex-col flex-wrap gap-block-gap sm:flex-row sm:items-center sm:justify-between">
           <CommonTotalBalance :balance="balance" :loading="loading" :error="balanceError" />
@@ -86,7 +86,7 @@
 
       <template v-if="noBalances">
         <TypographyCategoryLabel>
-          To start using zkSync ecosystem, deposit tokens in any convenient way
+          To start using Abstract ecosystem, deposit tokens in any convenient way
         </TypographyCategoryLabel>
 
         <div class="flex flex-col gap-block-gap">
@@ -104,9 +104,9 @@
         </div>
       </template>
       <template v-else>
-        <TypographyCategoryLabel>Deposit more tokens to zkSync</TypographyCategoryLabel>
+        <TypographyCategoryLabel>Deposit more tokens to Abstract</TypographyCategoryLabel>
 
-        <CommonCardWithLineButtons>
+        <CommonCardWithLineButtons transparent>
           <DestinationItem v-for="(item, index) in depositMethods" :key="index" v-bind="item.props">
             <template v-if="item.icon" #image>
               <DestinationIconContainer>
@@ -131,7 +131,7 @@ import {
 } from "@heroicons/vue/24/outline";
 import { mainnet } from "viem/chains";
 
-import useEcosystemBanner from "@/composables/zksync/deposit/useEcosystemBanner";
+// import useEcosystemBanner from "@/composables/zksync/deposit/useEcosystemBanner";
 
 import type { FunctionalComponent } from "vue";
 
@@ -142,7 +142,7 @@ const { balance, balanceInProgress, balanceError } = storeToRefs(walletStore);
 const { destinations } = storeToRefs(useDestinationsStore());
 const { eraNetwork } = storeToRefs(useZkSyncProviderStore());
 
-const { ecosystemBannerVisible } = useEcosystemBanner();
+// const { ecosystemBannerVisible } = useEcosystemBanner();
 
 const { loading, reset: resetSingleLoading } = useSingleLoading(computed(() => balanceInProgress.value));
 
@@ -182,7 +182,7 @@ const depositMethods = computed(() => {
         label: "Faucet",
         description: "Receive testnet funds",
         as: "a",
-        href: "https://docs.zksync.io/build/tooling/network-faucets.html",
+        href: "https://faucet.triangleplatform.com/abstract/testnet",
         target: "_blank",
         icon: ArrowTopRightOnSquareIcon,
       },

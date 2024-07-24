@@ -43,10 +43,10 @@ defineProps({
 
 <style lang="scss">
 .destination-item {
-  @apply px-3;
+  @apply bg-white px-3;
 
   .destination-item-icon {
-    @apply aspect-square h-auto w-full rounded-full border border-neutral-950/10 dark:border-white/10;
+    @apply aspect-square h-auto w-full rounded-full border border-neutral-950/10;
 
     .image-loader-image {
       @apply box-content;

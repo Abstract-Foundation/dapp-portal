@@ -32,7 +32,7 @@ defineProps({
   }
 
   &.transparent {
-    background-color: transparent;
+    @apply bg-transparent;
   }
 }
 </style>

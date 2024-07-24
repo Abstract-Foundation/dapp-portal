@@ -83,7 +83,7 @@ watch(
   @apply w-max;
 
   .transaction-hash-button-icon {
-    @apply -mr-1 ml-2 h-6 w-6;
+    @apply -mr-1 ml-2 h-4 w-4;
   }
 }
 </style>

@@ -49,7 +49,7 @@ defineProps({
   @apply relative isolate overflow-visible;
   &::before,
   &::after {
-    @apply absolute top-1/2 z-[1] h-10 w-[25%] -translate-y-1/2 transform from-neutral-100 to-transparent dark:from-neutral-900 sm:w-[15%];
+    @apply absolute top-1/2 z-[1] h-10 w-[25%] -translate-y-1/2 transform from-white to-transparent sm:w-[15%];
     content: "";
   }
   &::before {
@@ -140,7 +140,8 @@ defineProps({
       }
     }
     .check-icon {
-      @apply absolute left-1/2 top-1/2 h-9 w-9 origin-top-left transform rounded-full bg-success-400 p-1 text-black opacity-0 transition-opacity;
+      @apply absolute left-1/2 top-1/2 h-6 w-6 origin-top-left transform rounded-full bg-success-400 p-1 text-black opacity-0 transition-opacity;
+
       @keyframes bounce-in {
         0% {
           transform: scale(0) translate(-50%, -50%);

@@ -31,12 +31,12 @@
           description="Receive testnet funds"
           icon-url="/img/faucet.svg"
           as="a"
-          href="https://docs.zksync.io/build/tooling/network-faucets.html"
+          href="https://faucet.triangleplatform.com/abstract/testnet"
           target="_blank"
           :icon="ArrowTopRightOnSquareIcon"
         />
       </CommonCardWithLineButtons>
-      <CommonCardWithLineButtons v-if="isMainnet && eraNetwork.displaySettings?.showPartnerLinks">
+      <!-- <CommonCardWithLineButtons v-if="isMainnet && eraNetwork.displaySettings?.showPartnerLinks">
         <DestinationItem
           label="Top-up with cash"
           description="Buy tokens using a card or another method for fiat"
@@ -51,7 +51,7 @@
             </DestinationIconContainer>
           </template>
         </DestinationItem>
-      </CommonCardWithLineButtons>
+      </CommonCardWithLineButtons> -->
       <CommonCardWithLineButtons v-if="isMainnet && eraNetwork.displaySettings?.showPartnerLinks">
         <DestinationItem
           label="Bridge from other networks"
@@ -73,7 +73,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ArrowsUpDownIcon, ArrowTopRightOnSquareIcon, BanknotesIcon, QrCodeIcon } from "@heroicons/vue/24/outline";
+// import { ArrowsUpDownIcon, ArrowTopRightOnSquareIcon, BanknotesIcon, QrCodeIcon } from "@heroicons/vue/24/outline";
+import { ArrowsUpDownIcon, ArrowTopRightOnSquareIcon, QrCodeIcon } from "@heroicons/vue/24/outline";
 import { mainnet } from "viem/chains";
 
 const { destinations } = storeToRefs(useDestinationsStore());

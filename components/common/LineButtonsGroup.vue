@@ -4,25 +4,11 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-defineProps({
-  marginX: {
-    type: Boolean,
-    default: true,
-  },
-  marginY: {
-    type: Boolean,
-    default: true,
-  },
-  gap: {
-    type: Boolean,
-    default: true,
-  },
-});
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 .line-buttons-group {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.5rem 0;

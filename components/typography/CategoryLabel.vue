@@ -35,10 +35,10 @@ defineProps({
   &.has-padding {
     &.size- {
       &md {
-        @apply my-block-gap;
+        @apply mb-2 mt-6;
       }
       &sm {
-        @apply my-block-padding;
+        @apply mb-4 mt-8;
       }
     }
   }

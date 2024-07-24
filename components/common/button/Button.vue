@@ -26,7 +26,7 @@ defineProps({
 
 <style lang="scss">
 .default-button {
-  @apply flex items-center justify-center border bg-neutral-200 text-center transition transition-colors wrap-balance disabled:opacity-70;
+  @apply flex items-center justify-center rounded-[100px] border border-transparent bg-neutral-200 p-4 text-center transition transition-colors wrap-balance disabled:opacity-70;
 
   background: linear-gradient(180deg, #fdfdfd 0%, #f5f4f0 100%);
   box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.1);
@@ -36,23 +36,17 @@ defineProps({
   &:is(label) {
     @apply cursor-pointer;
   }
-  &.size- {
-    &xs {
-      @apply rounded-[32px] px-4 py-2;
-      box-shadow: none;
-    }
-    &sm {
-      @apply rounded-[20px] p-3;
-    }
-    &md {
-      @apply rounded-full p-4;
-    }
-  }
 
   &:enabled,
   &:is(a, label) {
-    &:not([aria-disabled="true"]) {
-      @apply hover:bg-neutral-300;
+    &:not([aria-disabled="true"]):hover {
+      border: 1px solid #00de73;
+      color: #00de73;
+    }
+
+    &.variant-primary:hover {
+      border: 1px solid #00de73;
+      color: white !important;
     }
   }
 
@@ -68,6 +62,7 @@ defineProps({
     &default {
       @apply text-neutral-700;
     }
+
     &light {
       @apply text-neutral-700;
     }

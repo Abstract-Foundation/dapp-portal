@@ -1,6 +1,6 @@
 <template>
   <CommonButtonLine as="div" class="transaction-summary-token-entry">
-    <div class="entry-label">{{ label }}</div>
+    <div class="entry-label">{{ label }}:</div>
     <div class="entry-info">
       <div class="entry-text-info">
         <div class="token-amount">{{ displayedAmount }} {{ token.symbol }}</div>
@@ -32,11 +32,12 @@ const displayedAmount = computed(() => parseTokenAmount(props.token.amount, prop
 
 <style lang="scss" scoped>
 .transaction-summary-token-entry {
-  @apply flex items-center py-4;
+  @apply flex items-center p-4;
 
   .entry-label {
-    @apply font-bold;
+    font-weight: 500;
   }
+
   .entry-info {
     @apply ml-auto flex gap-4;
 
