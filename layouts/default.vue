@@ -17,8 +17,6 @@
         </div>
       </div>
     </main>
-
-    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -27,12 +25,20 @@ const { isConnectingWallet } = storeToRefs(useOnboardStore());
 </script>
 
 <style lang="scss" scoped>
+@keyframes layoutAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .app-layout {
   @apply relative w-full;
 
   min-height: 100vh;
   min-height: 100dvh;
-  // padding-top: 6px;
   background: #f3f2ee;
   color: #000000;
 
@@ -45,6 +51,11 @@ const { isConnectingWallet } = storeToRefs(useOnboardStore());
   }
 
   .container {
+    animation: layoutAppear 500ms ease-in-out forwards;
+    animation-delay: 1300ms;
+
+    opacity: 0;
+
     max-width: none;
     width: calc(100% - 2rem);
     display: grid;
