@@ -1,6 +1,6 @@
 <template>
   <aside class="content">
-    <h1 class="d1">ABS Portal</h1>
+    <h1 class="d1">Abstract Bridge</h1>
 
     <p class="status-text b3">
       <span v-if="isConnected" className="walletState connected"></span>
