@@ -67,38 +67,16 @@ export const dockerizedNode: ZkSyncNetwork = {
 
 const publicChains: ZkSyncNetwork[] = [
   {
-    id: 324,
-    key: "mainnet",
-    name: "zkSync",
-    rpcUrl: "https://mainnet.era.zksync.io",
-    blockExplorerUrl: "https://era.zksync.network",
-    blockExplorerApi: "https://block-explorer-api.mainnet.zksync.io",
-    displaySettings: {
-      showPartnerLinks: true,
-    },
-    l1Network: l1Networks.mainnet,
-  },
-  {
-    id: 300,
-    key: "sepolia",
-    name: "zkSync Sepolia Testnet",
-    rpcUrl: "https://sepolia.era.zksync.dev",
-    blockExplorerUrl: "https://sepolia-era.zksync.network",
-    blockExplorerApi: "https://block-explorer-api.sepolia.zksync.dev",
+    id: 11124,
+    key: "abstract-testnet",
+    name: "Abstract Testnet",
+    rpcUrl: "https://api.testnet.abs.xyz",
+    blockExplorerUrl: "https://explorer.testnet.abs.xyz",
+    blockExplorerApi: "https://block-explorer-api.testnet.abs.xyz",
     displaySettings: {
       showPartnerLinks: true,
     },
     l1Network: l1Networks.sepolia,
-  },
-  {
-    id: 270,
-    key: "stage",
-    name: "zkSync Stage",
-    rpcUrl: "https://z2-dev-api.zksync.dev",
-    blockExplorerUrl: "https://sepolia-beta.staging-scan-v2.zksync.dev",
-    blockExplorerApi: "https://block-explorer-api.stage.zksync.dev",
-    l1Network: l1Networks.sepolia,
-    hidden: true,
   },
 ];
 
