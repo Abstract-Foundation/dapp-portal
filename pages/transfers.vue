@@ -56,7 +56,7 @@
         </CommonErrorBlock>
       </CommonCardWithLineButtons>
       <div v-else-if="displayedTransfers.length">
-        <CommonCardWithLineButtons>
+        <CommonCardWithLineButtons transparent>
           <TransactionTransferLineItem v-for="(item, index) in displayedTransfers" :key="index" :transfer="item" />
           <template v-if="canLoadMore && previousTransfersRequestInProgress">
             <TokenBalanceLoader v-for="index in 5" :key="index" />
