@@ -99,7 +99,7 @@
               @click="toNetworkModalOpened = true"
             >
               <template #left-icon>
-                <img :src="destination.iconUrl" class="h-full w-full" />
+                <img :src="`${destination.iconUrl}?v=${new Date().getTime()}`" class="h-full w-full" />
               </template>
               <span>{{ destination.label }}</span>
             </CommonButtonDropdown>

@@ -27,6 +27,7 @@
         <CommonCardWithLineButtons
           v-if="actionNotRequiredBridgeTransactions.length"
           :class="{ 'mt-block-gap': actionRequiredBridgeTransactions.length }"
+          transparent
         >
           <TransactionTransferLineItem
             v-for="(item, index) in actionNotRequiredBridgeTransactions"
@@ -46,11 +47,11 @@
       </template>
 
       <div v-if="loading">
-        <CommonCardWithLineButtons>
+        <CommonCardWithLineButtons transparent>
           <TokenBalanceLoader v-for="index in 5" :key="index" />
         </CommonCardWithLineButtons>
       </div>
-      <CommonCardWithLineButtons v-else-if="recentTransfersRequestError">
+      <CommonCardWithLineButtons v-else-if="recentTransfersRequestError" transparent>
         <CommonErrorBlock @try-again="fetch">
           Loading transfers error: {{ recentTransfersRequestError.message }}
         </CommonErrorBlock>
@@ -65,7 +66,7 @@
 
         <!-- Load more -->
         <template v-if="canLoadMore && !previousTransfersRequestInProgress">
-          <CommonCardWithLineButtons v-if="previousTransfersRequestError">
+          <CommonCardWithLineButtons v-if="previousTransfersRequestError" transparent>
             <CommonErrorBlock @try-again="fetchMore">
               Loading transfers error: {{ previousTransfersRequestError.message }}
             </CommonErrorBlock>
@@ -73,7 +74,7 @@
           <CommonButton v-else ref="loadMoreEl" variant="primary" class="mx-auto mt-4">Load more</CommonButton>
         </template>
       </div>
-      <CommonCardWithLineButtons v-else-if="!hasOnlyRecentBridgeOperations">
+      <CommonCardWithLineButtons v-else-if="!hasOnlyRecentBridgeOperations" transparent>
         <CommonEmptyBlock>
           At the moment you don't have any transfers on
           <span class="font-medium">{{ destinations.era.label }}</span>

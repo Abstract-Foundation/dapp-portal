@@ -110,7 +110,7 @@ const timeAgo = useTimeAgo(props.transfer.timestamp);
 
 <style lang="scss" scoped>
 .transaction-withdrawal-line-item {
-  @apply flex items-center gap-4;
+  @apply flex items-center gap-4 p-4;
 
   .line-button-with-img-image {
     @apply my-[1.5px] aspect-square h-auto w-12 flex-none self-start;
