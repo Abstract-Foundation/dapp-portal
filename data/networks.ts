@@ -70,9 +70,9 @@ const publicChains: ZkSyncNetwork[] = [
     id: 2741,
     key: "abstract",
     name: "Abstract Mainnet",
-    rpcUrl: "https://api.mainnet.abs.xyz",
+    rpcUrl: "https://api.raas.matterhosted.dev",
     blockExplorerUrl: "https://explorer.mainnet.abs.xyz",
-    blockExplorerApi: "https://block-explorer-api.mainnet.abs.xyz",
+    blockExplorerApi: "https://block-explorer-api.raas.matterhosted.dev",
     displaySettings: {
       showPartnerLinks: true,
     },
