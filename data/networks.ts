@@ -67,16 +67,16 @@ export const dockerizedNode: ZkSyncNetwork = {
 
 const publicChains: ZkSyncNetwork[] = [
   {
-    id: 11124,
-    key: "abstract-testnet",
-    name: "Abstract Testnet",
-    rpcUrl: "https://api.testnet.abs.xyz",
-    blockExplorerUrl: "https://explorer.testnet.abs.xyz",
-    blockExplorerApi: "https://block-explorer-api.testnet.abs.xyz",
+    id: 2741,
+    key: "abstract",
+    name: "Abstract Mainnet",
+    rpcUrl: "https://api.mainnet.abs.xyz",
+    blockExplorerUrl: "https://explorer.mainnet.abs.xyz",
+    blockExplorerApi: "https://block-explorer-api.mainnet.abs.xyz",
     displaySettings: {
       showPartnerLinks: true,
     },
-    l1Network: l1Networks.sepolia,
+    l1Network: l1Networks.mainnet,
   },
 ];
 
