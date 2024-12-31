@@ -92,9 +92,9 @@
         <CommonCardWithLineButtons class="mt-block-padding-1/2">
           <DestinationItem
             label="Official Documentation"
-            description="Developer resources and technical ZKsync documentation"
+            description="Developer resources and technical Abstract documentation"
             as="a"
-            href="https://era.zksync.io"
+            href="https://docs.abs.xyz"
             target="_blank"
             :icon="ArrowTopRightOnSquareIcon"
             size="sm"
