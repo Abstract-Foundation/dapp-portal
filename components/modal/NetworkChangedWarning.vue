@@ -6,7 +6,7 @@
         >from <span>{{ lastSelectedNetwork.name }}</span>
       </span>
       to
-      <span>{{ selectedNetwork.name }}</span> since your last use of zkSync Portal.
+      <span class="font-medium">{{ selectedNetwork.name }}</span> since your last use of Abstract Portal.
     </p>
     <TypographyCategoryLabel class="b2">Optional settings</TypographyCategoryLabel>
     <CommonCheckbox v-model="doNotSwitchNetwork" class="b3">Do not switch network automatically</CommonCheckbox>

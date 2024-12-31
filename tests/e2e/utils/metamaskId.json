@@ -1,17 +1,17 @@
 {
-  "zksyncGoerliNetwork": {
-    "networkName": "zkSync Era Testnet",
-    "newRpcUrl": "https://testnet.era.zksync.dev",
-    "chainId": "280",
+  "abstractTestnetNetwork": {
+    "networkName": "Abstract Testnet",
+    "newRpcUrl": "https://api.testnet.abs.xyz",
+    "chainId": "11124",
     "currencySymbol": "ETH",
-    "blockExplorerUrl": "https://goerli.explorer.zksync.io"
+    "blockExplorerUrl": "https://explorer.testnet.abs.xyz"
   },
-  "goerliNetwork": {
-    "networkName": "Goerli test network",
-    "newRpcUrl": "https://goerli.infura.io/v3/",
-    "chainId": "5",
-    "currencySymbol": "GoerliETH",
-    "blockExplorerUrl": "https://goerli.etherscan.io"
+  "sepoliaNetwork": {
+    "networkName": "Sepolia Testnet",
+    "newRpcUrl": "https://sepolia.infura.io/v3/",
+    "chainId": "11155111",
+    "currencySymbol": "SepoliaETH",
+    "blockExplorerUrl": "https://sepolia.etherscan.io"
   },
   "ethereumMainnetNetwork": {
     "networkName": "Ethereum Mainnet",

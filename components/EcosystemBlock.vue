@@ -8,15 +8,9 @@
       >
         <XMarkIcon aria-hidden="true" class="h-6 w-6" />
       </button>
-      <p class="text-left xs:text-center">Explore the wonders of zkSync ecosystem</p>
+      <p class="text-left xs:text-center">Explore the wonders of the Abstract ecosystem</p>
       <AnimationsEcosystemLogotypes />
-      <CommonButton
-        variant="primary"
-        as="a"
-        href="https://zksync.dappradar.com/ecosystem"
-        target="_blank"
-        class="w-full"
-      >
+      <CommonButton variant="primary" as="a" href="https://portal.abs.xyz" target="_blank" class="w-full">
         Explore Ecosystem
         <ArrowTopRightOnSquareIcon aria-hidden="true" class="ml-2 h-6 w-6" />
       </CommonButton>

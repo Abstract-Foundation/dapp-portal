@@ -7,7 +7,7 @@
       :icon="ExclamationTriangleIcon"
       class="mb-block-gap"
     >
-      <p>Bridging {{ customBridgeToken.symbol }} is not supported by zkSync Portal.</p>
+      <p>Bridging {{ customBridgeToken.symbol }} is not supported by Abstract Portal.</p>
     </CommonAlert>
     <TypographyCategoryLabel>
       Use 3rd party bridges to get native {{ customBridgeToken.symbol }} on

@@ -232,11 +232,11 @@ export class MainPage extends BasePage {
       const selector = `//*[contains(@href,'${link}')]` + this.externalLinkArrow;
       await this.verifyElement("xpath", selector, checkType);
     } else if (externalLinkName === "Transfer" || externalLinkName === "Withdraw") {
-      link = "https://goerli.explorer.zksync.io/tx";
+      link = "https://explorer.testnet.abs.xyz/tx";
       const selector = this.modalCard + `//*[contains(@href,'${link}')]` + this.externalLinkArrow;
       await this.verifyElement("xpath", selector, checkType);
     } else if (externalLinkName === "Deposit") {
-      link = "https://goerli.etherscan.io/tx/";
+      link = "https://sepolia.etherscan.io/tx/";
       const selector = this.modalCard + `//*[contains(@href,'${link}')]` + this.externalLinkArrow;
       await this.verifyElement("xpath", selector, checkType);
     } else {
@@ -266,10 +266,8 @@ export class MainPage extends BasePage {
     await this.click(this.networkSwitcher);
 
     if (
-      networkName === "zkSync Era Mainnet" ||
-      networkName === "zkSync Era Testnet" ||
-      networkName === "zkSync Lite Mainnet" ||
-      networkName === "zkSync Lite Goerli"
+      networkName === "Abstract Testnet" ||
+      networkName === "Abstract Mainnet"
     ) {
       result = `//*[text()='${networkName}']`;
     } else {

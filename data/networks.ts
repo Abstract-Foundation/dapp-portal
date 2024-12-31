@@ -55,7 +55,7 @@ export type ZkSyncNetwork = {
   getTokens?: () => Token[] | Promise<Token[]>; // If blockExplorerApi is specified, tokens will be fetched from there. Otherwise, this function will be used.
 };
 
-// See the official documentation on running a local zkSync node: https://era.zksync.io/docs/tools/testing/
+// See the official documentation on running a local ZKsync node: https://era.zksync.io/docs/tools/testing/
 // Also see the guide in the README.md file in the root of the repository.
 
 // In-memory node default config. Docs: https://era.zksync.io/docs/tools/testing/era-test-node.html
