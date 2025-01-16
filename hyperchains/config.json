@@ -4,9 +4,9 @@
       "id": 2741,
       "name": "Abstract",
       "key": "abstract",
-      "rpcUrl": "https://api.raas.matterhosted.dev/",
+      "rpcUrl": "https://api-efe16d37.ml.eeffc03e557f4daf.com/",
       "blockExplorerUrl": "https://explorer.mainnet.abs.xyz",
-      "blockExplorerApi": "https://block-explorer-api.raas.matterhosted.dev/",
+      "blockExplorerApi": "https://block-explorer-api-efe16d37.ml.eeffc03e557f4daf.com/",
       "publicL1NetworkId": 1
     },
     "tokens": [
