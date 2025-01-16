@@ -4,10 +4,57 @@
       "id": 2741,
       "name": "Abstract",
       "key": "abstract",
-      "rpcUrl": "https://solitary-ultra-emerald.abstract-mainnet.quiknode.pro/7e6af119737a70a9b3d9128931ecf0b72e5658c4/",
+      "rpcUrl": "https://api.mainnet.abs.xyz/",
       "blockExplorerUrl": "https://abscan.org",
-      "blockExplorerApi": "https://block-explorer-api.fsd.adfasd32442ds.com/",
+      "blockExplorerApi": "https://block-explorer-api.mainnet.abs.xyz/",
       "publicL1NetworkId": 1
+    },
+    "tokens": [
+      {
+        "address": "0x000000000000000000000000000000000000800A",
+        "l1Address": "0x0000000000000000000000000000000000000000",
+        "symbol": "ETH",
+        "name": "Ether",
+        "decimals": 18,
+        "iconUrl": "/img/eth.svg"
+      }
+    ]
+  },
+  {
+    "network": {
+      "id": 11124,
+      "name": "Abstract Testnet",
+      "key": "abstract-testnet",
+      "rpcUrl": "https://api.testnet.abs.xyz",
+      "blockExplorerUrl": "https://explorer.testnet.abs.xyz",
+      "blockExplorerApi": "https://block-explorer-api.testnet.abs.xyz",
+      "l1Network": {
+        "id": 11155111,
+        "name": "Sepolia",
+        "nativeCurrency": {
+          "name": "Ether",
+          "symbol": "ETH",
+          "decimals": 18
+        },
+        "rpcUrls": {
+          "default": {
+            "http": [
+              "https://ethereum-sepolia-rpc.publicnode.com"
+            ]
+          },
+          "public": {
+            "http": [
+              "https://ethereum-sepolia-rpc.publicnode.com"
+            ]
+          }
+        },
+        "blockExplorers": {
+          "default": {
+            "name": "Sepolia",
+            "url": "https://sepolia.etherscan.io"
+          }
+        }
+      }
     },
     "tokens": [
       {

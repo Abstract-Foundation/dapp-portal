@@ -90,11 +90,23 @@ const publicChains: ZkSyncNetwork[] = [
     name: "Abstract Mainnet",
     rpcUrl: "https://solitary-ultra-emerald.abstract-mainnet.quiknode.pro/7e6af119737a70a9b3d9128931ecf0b72e5658c4/",
     blockExplorerUrl: "https://explorer.mainnet.abs.xyz",
-    blockExplorerApi: "https://block-explorer-api.raas.matterhosted.dev",
+    blockExplorerApi: "https://block-explorer-api.mainnet.abs.xyz",
     displaySettings: {
       showPartnerLinks: true,
     },
     l1Network: l1Networks.mainnet,
+  },
+  {
+    id: 11124,
+    key: "abstract-testnet",
+    name: "Abstract Testnet",
+    rpcUrl: "https://api.testnet.abs.xyz",
+    blockExplorerUrl: "https://explorer.testnet.abs.xyz",
+    blockExplorerApi: "https://block-explorer-api.testnet.abs.xyz",
+    displaySettings: {
+      showPartnerLinks: true,
+    },
+    l1Network: l1Networks.sepolia,
   },
 ];
 
