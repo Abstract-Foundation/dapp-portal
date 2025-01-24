@@ -41,6 +41,7 @@ export const customBridgeTokens: CustomBridgeToken[] = [
     symbol: "USDT",
     bridgedSymbol: "USDT",
     name: "Tether",
+    bridgingDisabled: true,
   },
   {
     chainId: 1,
