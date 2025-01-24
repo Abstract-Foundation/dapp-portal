@@ -4,9 +4,9 @@
       "id": 2741,
       "name": "Abstract",
       "key": "abstract",
-      "rpcUrl": "https://api-efe16d37.ml.eeffc03e557f4daf.com/",
-      "blockExplorerUrl": "https://explorer.mainnet.abs.xyz",
-      "blockExplorerApi": "https://block-explorer-api-efe16d37.ml.eeffc03e557f4daf.com/",
+      "rpcUrl": "https://abstract-mainnet.g.alchemy.com/v2/kb_T0EkE5S_Xp3RIQ92CR9w_yiIIbhXd",
+      "blockExplorerUrl": "https://abscan.org",
+      "blockExplorerApi": "https://block-explorer-api.xlz.db9dc2db5db1ac6f9357.com",
       "publicL1NetworkId": 1
     },
     "tokens": [
