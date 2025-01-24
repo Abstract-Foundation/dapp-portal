@@ -88,7 +88,7 @@ const publicChains: ZkSyncNetwork[] = [
     id: 2741,
     key: "abstract",
     name: "Abstract Mainnet",
-    rpcUrl: "https://api.raas.matterhosted.dev",
+    rpcUrl: "https://solitary-ultra-emerald.abstract-mainnet.quiknode.pro/7e6af119737a70a9b3d9128931ecf0b72e5658c4/",
     blockExplorerUrl: "https://explorer.mainnet.abs.xyz",
     blockExplorerApi: "https://block-explorer-api.raas.matterhosted.dev",
     displaySettings: {
