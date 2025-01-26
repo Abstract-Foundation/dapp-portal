@@ -39,5 +39,5 @@ Feature: Deposit
     Then Element with "text" " Explore ecosystem " should be "visible"
     #id1609 Check "Explore ecosystem" button   
     Then I click by "text" with " Explore ecosystem " value
-    Then New page has "https://zksync.dappradar.com/" address
+    Then New page has "https://docs.abs.xyz/ecosystem/bridges" address
     
