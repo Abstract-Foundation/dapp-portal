@@ -62,7 +62,7 @@ export default (getSigner: () => Promise<Signer | undefined>, getProvider: () =>
       });
 
       const txResponse = await signer.sendTransaction(txRequest);
-      
+
       transactionHash.value = txResponse.hash;
       status.value = "done";
 
