@@ -152,12 +152,12 @@ When("A wallet should be {string}", config.stepTimeout, async function (this: IC
   mainPage = new MainPage(this);
   result = await mainPage.getTotalBalance();
 
-  if (balanceValue === "fullfilled") {
+  if (balanceValue === "fulfilled") {
     await expect(result).toBeGreaterThan(0.1);
   } else if (balanceValue === "empty") {
     await expect(result).toBeLessThanOrEqual(0);
   } else {
-    console.log("An incorrect value has been provided as a parameter: the correct ones only 'fullfilled' and 'empty'");
+    console.log("An incorrect value has been provided as a parameter: the correct ones only 'fulfilled' and 'empty'");
   }
 });
 
@@ -323,11 +323,11 @@ When(
 );
 
 When(
-  "Element {string} should dissapear in {int} seconds",
+  "Element {string} should disapear in {int} seconds",
   config.stepExtraTimeout,
   async function (this: ICustomWorld, selecterValue: string, seconds: number) {
     mainPage = new MainPage(this);
-    result = await mainPage.isElementDissapeared(selecterValue, seconds);
+    result = await mainPage.isElementDisapeared(selecterValue, seconds);
     await expect(result).toBe(true);
   }
 );
