@@ -130,7 +130,7 @@ export class MainPage extends BasePage {
     }
   }
 
-  async isElementDissapeared(selecterValue: string, seconds: number) {
+  async isElementDisapeared(selecterValue: string, seconds: number) {
     const helper = new Helper(this.world);
     const basePage = new BasePage(this.world);
     const selector = `//*[@${basePage.byTestId}'fee-amount']//*[@alt='${selecterValue}']`;
