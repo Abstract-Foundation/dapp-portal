@@ -7,7 +7,7 @@ Feature: Artifacts - UI
     @id1342
     Scenario: Check artifacts for rich wallet on Assets page
       When I am on the Main page
-      Then A wallet should be "fullfilled"
+      Then A wallet should be "fulfilled"
       Then Element with "text" "ETH" should be "visible"
       Then Element with "partial src" "eth.svg" should be "visible"
       Then Element with "text" "0x000000...00A" should be "visible"
