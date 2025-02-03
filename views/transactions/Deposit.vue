@@ -134,6 +134,7 @@
             :address="transaction!.from.address"
             :destination="transaction!.from.destination"
           />
+          <TransactionSummaryTokenEntry label="You receive" :token="transaction!.token" />
           <TransactionSummaryAddressEntry
             label="To"
             :address="transaction!.to.address"
