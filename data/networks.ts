@@ -36,6 +36,7 @@ export const l1Networks = {
     },
   },
 } as const;
+
 export type L1Network = Chain;
 
 export type ZkSyncNetwork = {
@@ -83,6 +84,18 @@ export const dockerizedNode: ZkSyncNetwork = {
 };
 
 const publicChains: ZkSyncNetwork[] = [
+  {
+    id: 2741,
+    key: "abstract",
+    name: "Abstract Mainnet",
+    rpcUrl: "https://solitary-ultra-emerald.abstract-mainnet.quiknode.pro/7e6af119737a70a9b3d9128931ecf0b72e5658c4/",
+    blockExplorerUrl: "https://explorer.mainnet.abs.xyz",
+    blockExplorerApi: "https://block-explorer-api.mainnet.abs.xyz",
+    displaySettings: {
+      showPartnerLinks: true,
+    },
+    l1Network: l1Networks.mainnet,
+  },
   {
     id: 11124,
     key: "abstract-testnet",

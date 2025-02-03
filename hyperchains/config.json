@@ -1,6 +1,27 @@
 [
   {
     "network": {
+      "id": 2741,
+      "name": "Abstract",
+      "key": "abstract",
+      "rpcUrl": "https://api.mainnet.abs.xyz/",
+      "blockExplorerUrl": "https://abscan.org",
+      "blockExplorerApi": "https://block-explorer-api.mainnet.abs.xyz/",
+      "publicL1NetworkId": 1
+    },
+    "tokens": [
+      {
+        "address": "0x000000000000000000000000000000000000800A",
+        "l1Address": "0x0000000000000000000000000000000000000000",
+        "symbol": "ETH",
+        "name": "Ether",
+        "decimals": 18,
+        "iconUrl": "/img/eth.svg"
+      }
+    ]
+  },
+  {
+    "network": {
       "id": 11124,
       "name": "Abstract Testnet",
       "key": "abstract-testnet",
