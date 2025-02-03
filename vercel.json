@@ -11,6 +11,18 @@
             ],
             "destination": "https://native-bridge.abs.xyz/bridge?network=abstract",
             "permanent": false
+        },
+        {
+            "source": "/(.*)",
+            "has": [
+                {
+                    "type": "header",
+                    "key": "host",
+                    "value": "portal.testnet.abs.xyz"
+                }
+            ],
+            "destination": "https://native-bridge.abs.xyz/bridge?network=abstract-testnet",
+            "permanent": false
         }
     ]
 }
