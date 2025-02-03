@@ -1,0 +1,16 @@
+{
+    "redirects": [
+        {
+            "source": "/(.*)",
+            "has": [
+                {
+                    "type": "header",
+                    "key": "host",
+                    "value": "portal.mainnet.abs.xyz"
+                }
+            ],
+            "destination": "https://native-bridge.abs.xyz/bridge?network=abstract",
+            "permanent": false
+        }
+    ]
+}
