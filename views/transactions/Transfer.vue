@@ -115,10 +115,7 @@
               >24-hour withdrawal delay</a
             >, you will need to manually claim your funds which requires paying another transaction fee on
             {{ eraNetwork.l1Network?.name }}. Alternatively you can use
-            <a
-              href="https://docs.abs.xyz/ecosystem/bridges"
-              target="_blank"
-              class="underline underline-offset-2"
+            <a href="https://docs.abs.xyz/ecosystem/bridges" target="_blank" class="underline underline-offset-2"
               >third-party bridges</a
             >.
           </p>
