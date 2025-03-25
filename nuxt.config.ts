@@ -40,7 +40,7 @@ export default defineNuxtConfig({
               defer: true,
             }
           : undefined,
-      ],
+      ].filter(Boolean),
     },
   },
   plugins: [],
@@ -90,7 +90,7 @@ export default defineNuxtConfig({
         "DATAPLANE_URL",
         "GIT_COMMIT_HASH",
         "GIT_REPO_URL",
-      ].map((key) => [`process.env.${key}`, JSON.stringify(process.env[key])])
+      ].map((key) => [`process.env.${key}`, JSON.stringify(process.env[key] || "")])
     ),
     css: {
       preprocessorOptions: {
