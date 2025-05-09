@@ -17,6 +17,14 @@
         "name": "Ether",
         "decimals": 18,
         "iconUrl": "/img/eth.svg"
+      },
+      {
+        "address": "0xd63b0E99303D51713f947195Bf37188A943255A1",
+        "l1Address": "0xdd3B11eF34cd511a2DA159034a05fcb94D806686",
+        "symbol": "REKT",
+        "name": "Rekt",
+        "decimals": 18,
+        "iconUrl": "https://rektcoin.com/wp-content/uploads/2024/11/Rekt-Coin-Small.png"
       }
     ]
   },
