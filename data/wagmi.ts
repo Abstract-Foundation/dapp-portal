@@ -1,5 +1,5 @@
 import { fallback, http } from "@wagmi/core";
-import { zkSync, type Chain, zkSyncSepoliaTestnet, zkSyncTestnet } from "@wagmi/core/chains";
+import { type Chain, zksync, zksyncSepoliaTestnet } from "@wagmi/core/chains";
 import { defaultWagmiConfig } from "@web3modal/wagmi";
 
 import { chainList, type ZkSyncNetwork } from "@/data/networks";
@@ -18,7 +18,7 @@ if (!portalRuntimeConfig.walletConnectProjectId) {
 }
 
 const useExistingEraChain = (network: ZkSyncNetwork) => {
-  const existingNetworks = [zkSync, zkSyncSepoliaTestnet, zkSyncTestnet];
+  const existingNetworks = [zksync, zksyncSepoliaTestnet];
   return existingNetworks.find((existingNetwork) => existingNetwork.id === network.id);
 };
 const formatZkSyncChain = (network: ZkSyncNetwork) => {
@@ -26,7 +26,7 @@ const formatZkSyncChain = (network: ZkSyncNetwork) => {
     id: network.id,
     name: network.name,
     network: network.key,
-    nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
+    nativeCurrency: network.nativeCurrency ?? { name: "Ether", symbol: "ETH", decimals: 18 },
     rpcUrls: {
       default: { http: [network.rpcUrl] },
       public: { http: [network.rpcUrl] },

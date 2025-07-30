@@ -43,7 +43,9 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   plugins: [],
+
   modules: [
     "@kevinmarrec/nuxt-pwa",
     "@pinia/nuxt", // https://pinia.vuejs.org/ssr/nuxt.html
@@ -57,9 +59,11 @@ export default defineNuxtConfig({
     "@/assets/css/fonts.css",
   ],
   ssr: false,
+
   pinia: {
     storesDirs: ["./store/**"],
   },
+
   pwa: {
     meta: {
       name: portalMeta.title,
@@ -70,12 +74,14 @@ export default defineNuxtConfig({
       short_name: "Portal",
     },
   },
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   vite: {
     // Make listed envs public and accessible in the runtime
     define: Object.fromEntries(
@@ -90,6 +96,7 @@ export default defineNuxtConfig({
         "DATAPLANE_URL",
         "GIT_COMMIT_HASH",
         "GIT_REPO_URL",
+        "ONRAMP_STAGING",
       ].map((key) => [`process.env.${key}`, JSON.stringify(process.env[key])])
     ),
     css: {
@@ -101,6 +108,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   devtools: { enabled: true },
   runtimeConfig: {
     public: {
@@ -108,4 +116,5 @@ export default defineNuxtConfig({
       sentryENV: process.env.SENTRY_ENV,
     },
   },
+  compatibilityDate: "2025-03-24",
 });

@@ -67,7 +67,9 @@
             </CommonButtonDropdown>
           </template>
         </CommonInputTransactionAmount>
-        <CommonHeightTransition :opened="!!tokenCustomBridge && !tokenCustomBridge.bridgingDisabled">
+        <CommonHeightTransition
+          :opened="!!tokenCustomBridge && !tokenCustomBridge.bridgingDisabled && !tokenCustomBridge.hideAlertMessage"
+        >
           <div class="mb-block-padding-1/2 sm:mb-block-gap">
             <CommonAlert variant="warning" size="sm">
               <p>
@@ -111,6 +113,12 @@
           class="mt-6"
           :custom-bridge-token="tokenCustomBridge"
         />
+        <TransactionNativeBridge
+          v-if="nativeTokenBridgingOnly"
+          :era-network="eraNetwork"
+          type="deposit"
+          class="mt-6"
+        ></TransactionNativeBridge>
       </template>
       <template v-else-if="step === 'wallet-warning'">
         <CommonAlert variant="warning" :icon="ExclamationTriangleIcon" class="mb-block-padding-1/2 sm:mb-block-gap">
@@ -151,7 +159,11 @@
       </template>
 
       <template
-        v-if="(!tokenCustomBridge || !tokenCustomBridge?.bridgingDisabled) && (step === 'form' || step === 'confirm')"
+        v-if="
+          !nativeTokenBridgingOnly &&
+          (!tokenCustomBridge || !tokenCustomBridge?.bridgingDisabled) &&
+          (step === 'form' || step === 'confirm')
+        "
       >
         <CommonErrorBlock v-if="feeError" class="mt-2" @try-again="estimate">
           Fee estimation error: {{ feeError.message }}
@@ -283,7 +295,7 @@
         <EthereumTransactionFooter>
           <template #after-checks>
             <template v-if="step === 'form'">
-              <template v-if="!enoughAllowance && !continueButtonDisabled">
+              <template v-if="!enoughAllowance && !continueButtonDisabled && !nativeTokenBridgingOnly">
                 <CommonButton
                   type="submit"
                   :disabled="continueButtonDisabled || setAllowanceInProgress"
@@ -386,6 +398,7 @@ import DepositSubmitted from "@/views/transactions/DepositSubmitted.vue";
 
 import type { Token, TokenAmount } from "@/types";
 import type { BigNumberish } from "ethers";
+import type { Address } from "viem";
 
 const route = useRoute();
 const router = useRouter();
@@ -422,7 +435,7 @@ const destination = computed(() => destinations.value.era);
 
 const availableTokens = computed<Token[]>(() => {
   if (balance.value) return balance.value;
-  return Object.values(l1Tokens.value ?? []);
+  return getTokensWithCustomBridgeTokens(Object.values(l1Tokens.value ?? []), AddressChainType.L1);
 });
 const availableBalances = computed<TokenAmount[]>(() => {
   return balance.value ?? [];
@@ -442,9 +455,20 @@ const selectedToken = computed<Token | undefined>(() => {
   if (!selectedTokenAddress.value) {
     return defaultToken.value;
   }
+
+  // Handle special case for L1 tokens with multiple L2 counterparts (native and bridged)
+  // In the case of those tokens, we create the identifier by combining the L1 address and L2 address
+  const getTokenId = (token: Token): string => {
+    const hasMultipleL2Counterparts =
+      selectedTokenAddress.value?.includes(token.address) &&
+      selectedTokenAddress.value?.includes(String(token.l2Address));
+
+    return hasMultipleL2Counterparts ? `${token.address}-${token.l2Address}` : token.address;
+  };
+
   return (
-    availableTokens.value.find((e) => e.address === selectedTokenAddress.value) ||
-    availableBalances.value.find((e) => e.address === selectedTokenAddress.value) ||
+    availableTokens.value.find((e) => getTokenId(e) === selectedTokenAddress.value) ||
+    availableBalances.value.find((e) => getTokenId(e) === selectedTokenAddress.value) ||
     defaultToken.value
   );
 });
@@ -453,7 +477,7 @@ const tokenCustomBridge = computed(() => {
     return undefined;
   }
   const customBridgeToken = customBridgeTokens.find(
-    (e) => eraNetwork.value.l1Network?.id === e.chainId && e.l1Address === selectedToken.value?.address
+    (e) => eraNetwork.value.l1Network?.id === e.chainId && e.l2Address === selectedToken.value?.address
   );
   return customBridgeToken;
 });
@@ -638,6 +662,18 @@ watch(
   { immediate: true }
 );
 
+const nativeTokenBridgingOnly = computed(() => {
+  if (
+    eraNetwork.value.nativeTokenBridgingOnly &&
+    eraNetwork.value.nativeCurrency &&
+    selectedToken.value &&
+    selectedToken.value.address !== baseToken.value?.l1Address
+  ) {
+    return true;
+  }
+  return false;
+});
+
 const continueButtonDisabled = computed(() => {
   if (
     !transaction.value ||
@@ -698,9 +734,10 @@ const makeTransaction = async () => {
 
   const tx = await commitTransaction(
     {
-      to: transaction.value!.to.address,
-      tokenAddress: transaction.value!.token.address,
+      to: transaction.value!.to.address as Address,
+      tokenAddress: transaction.value!.token.address as Address,
       amount: transaction.value!.token.amount,
+      bridgeAddress: transaction.value!.token.l1BridgeAddress as Address | undefined,
     },
     feeValues.value!
   );

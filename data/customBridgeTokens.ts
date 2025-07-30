@@ -4,9 +4,13 @@ export type CustomBridgeToken = {
   l2Address: string;
   symbol: string;
   bridgedSymbol: string;
+  decimals: number;
   name?: string;
   bridgingDisabled?: true;
+  hideAlertMessage?: true;
   learnMoreUrl?: string;
+  l1BridgeAddress?: string;
+  l2BridgeAddress?: string;
   bridges: {
     label: string;
     iconUrl: string;

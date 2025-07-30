@@ -18,7 +18,7 @@ export const l1Networks = {
     network: "mainnet",
     rpcUrls: {
       default: {
-        http: ["https://rpc.ankr.com/eth/", "https://ethereum-rpc.publicnode.com", "https://cloudflare-eth.com"],
+        http: ["https://ethereum-rpc.publicnode.com", "https://cloudflare-eth.com"],
       },
     },
   },
@@ -27,11 +27,7 @@ export const l1Networks = {
     name: "Ethereum Sepolia Testnet",
     rpcUrls: {
       default: {
-        http: [
-          "https://rpc.ankr.com/eth_sepolia/",
-          "https://ethereum-sepolia-rpc.publicnode.com",
-          "https://rpc.sepolia.org",
-        ],
+        http: ["https://ethereum-sepolia-rpc.publicnode.com", "https://rpc.sepolia.org"],
       },
     },
   },
@@ -50,8 +46,12 @@ export type ZkSyncNetwork = {
   blockExplorerUrl?: string;
   blockExplorerApi?: string;
   displaySettings?: {
+    onramp?: boolean;
     showPartnerLinks?: boolean;
+    isTestnet?: boolean;
   };
+  nativeCurrency?: { name: string; symbol: string; decimals: number };
+  nativeTokenBridgingOnly?: boolean;
   getTokens?: () => Token[] | Promise<Token[]>; // If blockExplorerApi is specified, tokens will be fetched from there. Otherwise, this function will be used.
 };
 
@@ -92,7 +92,9 @@ const publicChains: ZkSyncNetwork[] = [
     blockExplorerUrl: "https://explorer.mainnet.abs.xyz",
     blockExplorerApi: "https://block-explorer-api.mainnet.abs.xyz",
     displaySettings: {
+      onramp: true,
       showPartnerLinks: true,
+      isTestnet: false,
     },
     l1Network: l1Networks.mainnet,
   },
@@ -104,7 +106,9 @@ const publicChains: ZkSyncNetwork[] = [
     blockExplorerUrl: "https://explorer.testnet.abs.xyz",
     blockExplorerApi: "https://block-explorer-api.testnet.abs.xyz",
     displaySettings: {
+      onramp: false,
       showPartnerLinks: true,
+      isTestnet: true,
     },
     l1Network: l1Networks.sepolia,
   },

@@ -47,7 +47,7 @@ export const useZkSyncTokensStore = defineStore("zkSyncTokens", () => {
 
     if (!baseToken) {
       baseToken = {
-        address: "0x000000000000000000000000000000000000800A",
+        address: L2_BASE_TOKEN_ADDRESS,
         l1Address: await provider.getBaseTokenContractAddress(),
         symbol: "BASETOKEN",
         name: "Base Token",
@@ -72,7 +72,7 @@ export const useZkSyncTokensStore = defineStore("zkSyncTokens", () => {
     );
     return [
       baseToken,
-      ...(baseToken.address.toUpperCase() !== ethToken.address.toUpperCase() ? [ethToken] : []),
+      ...(ethToken && baseToken.address.toUpperCase() !== ethToken.address.toUpperCase() ? [ethToken] : []),
       ...nonBaseOrEthExplorerTokens,
     ].map((token) => ({
       ...token,
