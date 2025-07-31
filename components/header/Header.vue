@@ -48,16 +48,18 @@
         <div class="sm:hidden">
           <HeaderAccountDropdownButton no-chevron @click="mobileAccountNavigationOpened = true" />
         </div>
-
-        <CommonButton class="hamburger-icon" @click="mobileMainNavigationOpened = true">
-          <Bars3Icon class="h-6 w-6" aria-hidden="true" />
-          <transition v-bind="TransitionOpacity()">
-            <CommonBadge v-if="withdrawalsAvailableForClaiming.length" class="action-available-badge">
-              {{ withdrawalsAvailableForClaiming.length }}
-            </CommonBadge>
-          </transition>
-        </CommonButton>
+        <div class="hidden sm:block">
+          <HeaderAccountDropdown />
+        </div>
       </template>
+      <CommonButton class="hamburger-icon" @click="mobileMainNavigationOpened = true">
+        <Bars3Icon class="h-6 w-6" aria-hidden="true" />
+        <transition v-bind="TransitionOpacity()">
+          <CommonBadge v-if="withdrawalsAvailableForClaiming.length" class="action-available-badge">
+            {{ withdrawalsAvailableForClaiming.length }}
+          </CommonBadge>
+        </transition>
+      </CommonButton>
     </div>
   </header>
 </template>

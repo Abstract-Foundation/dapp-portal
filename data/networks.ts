@@ -141,9 +141,7 @@ const determineChainList = (): ZkSyncNetwork[] => {
     case "dockerized":
       return [dockerizedNode];
     case "hyperchain": {
-      const chains = getHyperchains();
-      console.log(chains);
-      return chains;
+      return getHyperchains();
     }
     default:
       return [...publicChains];
