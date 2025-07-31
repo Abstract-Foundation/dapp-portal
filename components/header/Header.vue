@@ -3,37 +3,50 @@
     <HeaderMobileMainNavigation v-model:opened="mobileMainNavigationOpened" />
     <HeaderMobileAccountNavigation v-model:opened="mobileAccountNavigationOpened" />
 
-    <div class="header-inner">
-      <div class="links-container">
-        <NuxtLink :to="{ name: 'bridge' }">
-          <ABSButton :active="routes.bridge.includes(route?.name?.toString())" mono>Bridge</ABSButton>
-        </NuxtLink>
-
-        <NuxtLink :to="{ name: 'assets' }">
-          <ABSButton :active="routes.assets.includes(route?.name?.toString())" mono>Assets</ABSButton>
-        </NuxtLink>
-
-        <NuxtLink :to="{ name: 'transfers' }">
-          <ABSButton :active="routes.transfers.includes(route?.name?.toString())" mono>Transfers</ABSButton>
-        </NuxtLink>
-      </div>
-
-      <div class="right-side">
-        <HeaderNetworkDropdown class="network-dropdown" />
-
-        <div class="wallet-connect">
-          <ABSButton v-if="!isConnected" icon="wallet" @click="onboardStore.openModal()">
-            <span class="whitespace-nowrap">Connect wallet</span>
-          </ABSButton>
-
-          <template v-else>
-            <div class="sm:hidden">
-              <HeaderAccountDropdownButton no-chevron @click="mobileAccountNavigationOpened = true" />
-            </div>
-            <div class="hidden sm:block">
-              <HeaderAccountDropdown />
-            </div>
-          </template>
+    <div class="links-container">
+      <NuxtLink
+        v-if="selectedNetwork.displaySettings?.onramp"
+        class="link-item"
+        :to="{ name: 'on-ramp' }"
+        :class="{ 'router-link-exact-active': routes.onramp.includes(route.name?.toString() || '') }"
+      >
+        <ABSButton :active="routes.onramp.includes(route?.name?.toString())" mono>On-Ramp</ABSButton>
+      </NuxtLink>
+      <NuxtLink
+        class="link-item"
+        :to="{ name: 'bridge' }"
+        :class="{ 'router-link-exact-active': routes.bridge.includes(route.name?.toString() || '') }"
+      >
+        <ABSButton :active="routes.bridge.includes(route?.name?.toString())" mono>Bridge</ABSButton>
+      </NuxtLink>
+      <NuxtLink
+        class="link-item"
+        :to="{ name: 'assets' }"
+        :class="{ 'router-link-exact-active': routes.assets.includes(route.name?.toString() || '') }"
+      >
+        <ABSButton :active="routes.assets.includes(route?.name?.toString())" mono>Assets</ABSButton>
+      </NuxtLink>
+      <NuxtLink
+        class="link-item"
+        :to="{ name: 'transfers' }"
+        :class="{ 'router-link-exact-active': routes.transfers.includes(route.name?.toString() || '') }"
+      >
+        <ABSButton :active="routes.transfers.includes(route?.name?.toString())" mono>Transfers</ABSButton>
+        <transition v-bind="TransitionOpacity()">
+          <CommonBadge v-if="withdrawalsAvailableForClaiming.length">
+            {{ withdrawalsAvailableForClaiming.length }}
+          </CommonBadge>
+        </transition>
+      </NuxtLink>
+    </div>
+    <div class="right-side">
+      <HeaderNetworkDropdown class="network-dropdown" />
+      <ABSButton v-if="!isConnected" variant="primary" @click="onboardStore.openModal()">
+        <span class="whitespace-nowrap">Connect wallet</span>
+      </ABSButton>
+      <template v-else>
+        <div class="sm:hidden">
+          <HeaderAccountDropdownButton no-chevron @click="mobileAccountNavigationOpened = true" />
         </div>
 
         <CommonButton class="hamburger-icon" @click="mobileMainNavigationOpened = true">
@@ -44,7 +57,7 @@
             </CommonBadge>
           </transition>
         </CommonButton>
-      </div>
+      </template>
     </div>
   </header>
 </template>
@@ -60,9 +73,11 @@ const routes = {
   bridge: ["bridge", "bridge-withdraw"],
   assets: ["assets", "balances", "receive-methods", "receive", "send-methods", "send"],
   transfers: ["transfers"],
+  onramp: ["on-ramp"],
 };
 
 const onboardStore = useOnboardStore();
+const { selectedNetwork } = storeToRefs(useNetworkStore());
 const { isConnected } = storeToRefs(onboardStore);
 const { withdrawalsAvailableForClaiming } = storeToRefs(useZkSyncWithdrawalsStore());
 

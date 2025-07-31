@@ -11,15 +11,30 @@
 
     <transition v-bind="TransitionAlertScaleInOutTransition">
       <MenuItems class="network-options-container">
-        <MenuItem v-for="item in chainList.filter((e) => !e.hidden)" :key="item.key" as="template">
-          <ABSButton class-name="w-full" inline mono @click="buttonClicked(item)">
-            <div class="button-inner">
-              <IconsEra class="w-5" />
-              <span>{{ item.name }}</span>
-              <CheckIcon v-if="isNetworkSelected(item)" aria-hidden="true" class="w-5" />
-            </div>
-          </ABSButton>
-        </MenuItem>
+        <div v-for="item in mainnetList.filter((e) => !e.hidden)" :key="item.key">
+          <MenuItem as="template">
+            <ABSButton class-name="w-full" inline mono :active="isNetworkSelected(item)" @click="buttonClicked(item)">
+              <div class="button-inner">
+                <IconsEra class="w-5" /><span>{{ item.name }}</span>
+                <CheckIcon v-if="isNetworkSelected(item)" aria-hidden="true" class="w-5" />
+              </div>
+            </ABSButton>
+          </MenuItem>
+        </div>
+        <template v-if="testnetList.length > 0">
+          <hr class="border-neutral-200 dark:border-neutral-800" />
+          <p class="mt-2 pl-3 text-xs font-bold text-neutral-600">Testnets</p>
+        </template>
+        <div v-for="item in testnetList.filter((e) => !e.hidden)" :key="item.key">
+          <MenuItem as="template">
+            <ABSButton class-name="w-full" inline mono :active="isNetworkSelected(item)" @click="buttonClicked(item)">
+              <div class="button-inner">
+                <IconsEra class="w-5" /><span>{{ item.name }}</span>
+                <CheckIcon v-if="isNetworkSelected(item)" aria-hidden="true" class="w-5" />
+              </div>
+            </ABSButton>
+          </MenuItem>
+        </div>
       </MenuItems>
     </transition>
   </Menu>
@@ -33,6 +48,9 @@ import ABSButton from "@/components/common/button/ABSButton.vue";
 import { chainList } from "@/data/networks";
 
 import type { ZkSyncNetwork } from "@/data/networks";
+
+const mainnetList = computed(() => chainList.filter((e) => e.displaySettings && !e.displaySettings.isTestnet));
+const testnetList = computed(() => chainList.filter((e) => e.displaySettings && e.displaySettings.isTestnet));
 
 const route = useRoute();
 

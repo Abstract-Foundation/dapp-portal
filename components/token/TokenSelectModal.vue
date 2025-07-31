@@ -27,7 +27,7 @@
           <CommonLineButtonsGroup class="category" :gap="false" :margin-y="false">
             <TokenLine
               v-for="item in displayedTokens"
-              :key="item.address"
+              :key="item.l2Address ? `${item.address}-${item.l2Address}` : item.address"
               class="token-line"
               v-bind="item"
               @click="selectedToken = item"
@@ -43,7 +43,7 @@
               <TokenBalance
                 v-for="item in group.balances"
                 v-bind="item"
-                :key="item.address"
+                :key="item.l2Address ? `${item.address}-${item.l2Address}` : item.address"
                 variant="light"
                 @click="selectedToken = item"
               />
@@ -111,6 +111,9 @@ const search = ref("");
 const hasBalances = computed(() => props.balances.length > 0);
 const filterTokens = (tokens: Token[]) => {
   const lowercaseSearch = search.value.toLowerCase();
+  if (lowercaseSearch === "") {
+    return tokens.slice(0, 100);
+  }
   return tokens.filter(({ address, name, symbol }) =>
     Object.values({ address, name, symbol })
       .filter((e) => typeof e === "string")
@@ -134,7 +137,11 @@ const selectedToken = computed({
   },
   set: (value) => {
     if (value) {
-      selectedTokenAddress.value = value.address;
+      // Handle special case for L1 tokens with multiple L2 counterparts (native and bridged) - create unique identifier
+      const hasMultipleTokens =
+        props.tokens.filter((e) => e.address === value.address).length > 1 ||
+        props.balances.filter((e) => e.address === value.address).length > 1;
+      selectedTokenAddress.value = hasMultipleTokens ? `${value.address}-${value.l2Address}` : value.address;
     } else {
       selectedTokenAddress.value = undefined;
     }
