@@ -24,6 +24,7 @@ export const customBridgeTokens: CustomBridgeToken[] = [
     chainId: 1,
     l1Address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
     l2Address: "0x3355df6D4c9C3035724Fd0e3914dE96A5a83aaf4",
+    decimals: 6,
     bridges: [
       {
         label: "Stargate",
@@ -51,6 +52,7 @@ export const customBridgeTokens: CustomBridgeToken[] = [
     chainId: 1,
     l1Address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     l2Address: "0x703b52F2b28fEbcB60E1372858AF5b18849FE867",
+    decimals: 6,
     bridges: [
       {
         label: "Stargate",

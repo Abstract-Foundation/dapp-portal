@@ -12,22 +12,13 @@
     <transition v-bind="TransitionAlertScaleInOutTransition">
       <MenuItems class="network-options-container">
         <div v-for="item in mainnetList.filter((e) => !e.hidden)" :key="item.key">
-          <MenuItem v-slot="{ active }" as="template">
-            <CommonButtonDropdown
-              size="sm"
-              no-chevron
-              :active="{ active }"
-              class="options-item"
-              @click="buttonClicked(item)"
-            >
-              <template #left-icon>
-                <IconsEra />
-              </template>
-              <span>{{ item.name }}</span>
-              <template #right-icon>
-                <CheckIcon v-if="isNetworkSelected(item)" aria-hidden="true" />
-              </template>
-            </CommonButtonDropdown>
+          <MenuItem as="template">
+            <ABSButton class-name="w-full" inline mono :active="isNetworkSelected(item)" @click="buttonClicked(item)">
+              <div class="button-inner">
+                <IconsEra class="w-5" /><span>{{ item.name }}</span>
+                <CheckIcon v-if="isNetworkSelected(item)" aria-hidden="true" class="w-5" />
+              </div>
+            </ABSButton>
           </MenuItem>
         </div>
         <template v-if="testnetList.length > 0">
@@ -35,22 +26,13 @@
           <p class="mt-2 pl-3 text-xs font-bold text-neutral-600">Testnets</p>
         </template>
         <div v-for="item in testnetList.filter((e) => !e.hidden)" :key="item.key">
-          <MenuItem v-slot="{ active }" as="template">
-            <CommonButtonDropdown
-              size="sm"
-              no-chevron
-              :active="{ active }"
-              class="options-item"
-              @click="buttonClicked(item)"
-            >
-              <template #left-icon>
-                <IconsEra />
-              </template>
-              <span>{{ item.name }}</span>
-              <template #right-icon>
-                <CheckIcon v-if="isNetworkSelected(item)" aria-hidden="true" />
-              </template>
-            </CommonButtonDropdown>
+          <MenuItem as="template">
+            <ABSButton class-name="w-full" inline mono :active="isNetworkSelected(item)" @click="buttonClicked(item)">
+              <div class="button-inner">
+                <IconsEra class="w-5" /><span>{{ item.name }}</span>
+                <CheckIcon v-if="isNetworkSelected(item)" aria-hidden="true" class="w-5" />
+              </div>
+            </ABSButton>
           </MenuItem>
         </div>
       </MenuItems>

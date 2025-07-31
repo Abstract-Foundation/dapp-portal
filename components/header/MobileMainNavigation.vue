@@ -34,7 +34,7 @@
               </DestinationIconContainer>
             </template>
           </DestinationItem>
-          <DestinationItem label="Bridge" as="RouterLink" :to="{ name: 'bridge' }" size="sm">
+          <DestinationItem label="Bridge" as="RouterLink" :to="{ name: 'bridge' }" size="sm" class="bg-white">
             <template #image>
               <DestinationIconContainer>
                 <ArrowsUpDownIcon aria-hidden="true" />

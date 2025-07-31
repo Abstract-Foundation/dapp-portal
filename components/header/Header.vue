@@ -3,12 +3,6 @@
     <HeaderMobileMainNavigation v-model:opened="mobileMainNavigationOpened" />
     <HeaderMobileAccountNavigation v-model:opened="mobileAccountNavigationOpened" />
 
-    <div class="logo-container">
-      <NuxtLink :to="{ name: 'bridge' }">
-        <IconsZkSync class="logo-icon" />
-      </NuxtLink>
-      <span class="beta-label">Beta</span>
-    </div>
     <div class="links-container">
       <NuxtLink
         v-if="selectedNetwork.displaySettings?.onramp"
@@ -16,28 +10,28 @@
         :to="{ name: 'on-ramp' }"
         :class="{ 'router-link-exact-active': routes.onramp.includes(route.name?.toString() || '') }"
       >
-        <BanknotesIcon class="link-icon" aria-hidden="true" />
-        On-Ramp
+        <ABSButton :active="routes.onramp.includes(route?.name?.toString())" mono>On-Ramp</ABSButton>
       </NuxtLink>
       <NuxtLink
         class="link-item"
         :to="{ name: 'bridge' }"
         :class="{ 'router-link-exact-active': routes.bridge.includes(route.name?.toString() || '') }"
       >
-        <ArrowsUpDownIcon class="link-icon" aria-hidden="true" />
-        Bridge
+        <ABSButton :active="routes.bridge.includes(route?.name?.toString())" mono>Bridge</ABSButton>
       </NuxtLink>
       <NuxtLink
         class="link-item"
         :to="{ name: 'assets' }"
         :class="{ 'router-link-exact-active': routes.assets.includes(route.name?.toString() || '') }"
       >
-        <WalletIcon class="link-icon" aria-hidden="true" />
-        Assets
+        <ABSButton :active="routes.assets.includes(route?.name?.toString())" mono>Assets</ABSButton>
       </NuxtLink>
-      <NuxtLink class="link-item" :to="{ name: 'transfers' }">
-        <ArrowsRightLeftIcon class="link-icon" aria-hidden="true" />
-        Transfers
+      <NuxtLink
+        class="link-item"
+        :to="{ name: 'transfers' }"
+        :class="{ 'router-link-exact-active': routes.transfers.includes(route.name?.toString() || '') }"
+      >
+        <ABSButton :active="routes.transfers.includes(route?.name?.toString())" mono>Transfers</ABSButton>
         <transition v-bind="TransitionOpacity()">
           <CommonBadge v-if="withdrawalsAvailableForClaiming.length">
             {{ withdrawalsAvailableForClaiming.length }}
@@ -47,9 +41,9 @@
     </div>
     <div class="right-side">
       <HeaderNetworkDropdown class="network-dropdown" />
-      <CommonButton v-if="!isConnected" variant="primary" @click="onboardStore.openModal()">
+      <ABSButton v-if="!isConnected" variant="primary" @click="onboardStore.openModal()">
         <span class="whitespace-nowrap">Connect wallet</span>
-      </CommonButton>
+      </ABSButton>
       <template v-else>
         <div class="sm:hidden">
           <HeaderAccountDropdownButton no-chevron @click="mobileAccountNavigationOpened = true" />
@@ -63,27 +57,22 @@
             </CommonBadge>
           </transition>
         </CommonButton>
-      </div>
+      </template>
     </div>
   </header>
 </template>
 
 <script lang="ts" setup>
-import {
-  ArrowsRightLeftIcon,
-  ArrowsUpDownIcon,
-  Bars3Icon,
-  MoonIcon,
-  SunIcon,
-  WalletIcon,
-  BanknotesIcon,
-} from "@heroicons/vue/24/outline";
+import { Bars3Icon } from "@heroicons/vue/24/outline";
+
+import ABSButton from "@/components/common/button/ABSButton.vue";
 
 const route = useRoute();
 
 const routes = {
   bridge: ["bridge", "bridge-withdraw"],
   assets: ["assets", "balances", "receive-methods", "receive", "send-methods", "send"],
+  transfers: ["transfers"],
   onramp: ["on-ramp"],
 };
 

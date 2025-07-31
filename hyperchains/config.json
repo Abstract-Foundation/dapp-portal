@@ -7,7 +7,12 @@
       "rpcUrl": "https://api.mainnet.abs.xyz/",
       "blockExplorerUrl": "https://abscan.org",
       "blockExplorerApi": "https://block-explorer-api.mainnet.abs.xyz/",
-      "publicL1NetworkId": 1
+      "publicL1NetworkId": 1,
+      "displaySettings": {
+        "onramp": false,
+        "showPartnerLinks": false,
+        "isTestnet": false
+      }
     },
     "tokens": [
       {
@@ -62,6 +67,11 @@
             "url": "https://sepolia.etherscan.io"
           }
         }
+      },
+      "displaySettings": {
+        "onramp": false,
+        "showPartnerLinks": false,
+        "isTestnet": true
       }
     },
     "tokens": [
@@ -73,6 +83,11 @@
         "decimals": 18,
         "iconUrl": "/img/eth.svg"
       }
-    ]
+    ],
+    "displaySettings": {
+      "onramp": false,
+      "showPartnerLinks": false,
+      "isTestnet": true
+    }
   }
 ]
