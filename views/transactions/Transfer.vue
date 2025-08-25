@@ -117,7 +117,7 @@
       <template v-else-if="step === 'withdrawal-finalization-warning'">
         <CommonAlert variant="warning" :icon="ExclamationTriangleIcon" class="mb-block-padding-1/2 sm:mb-block-gap">
           <p v-if="!isCustomNode">
-            After a
+            After an approximately
             <a class="underline underline-offset-2" :href="ZKSYNC_WITHDRAWAL_DELAY" target="_blank"
               >~5+ hour withdrawal delay</a
             >, you will need to manually claim your funds which requires paying another transaction fee on
@@ -127,8 +127,8 @@
             >.
           </p>
           <p v-else>
-            After transaction is executed on {{ eraNetwork.l1Network?.name }}, you will need to manually claim your
-            funds which requires paying another transaction fee on {{ eraNetwork.l1Network?.name }}.
+            After transaction is executed on {{ eraNetwork.l1Network?.name }}, you will need to claim your funds which
+            requires paying another transaction fee on {{ eraNetwork.l1Network?.name }}.
           </p>
         </CommonAlert>
         <CommonButton
@@ -154,11 +154,11 @@
           class="mb-block-padding-1/2 sm:mb-block-gap"
         >
           <p v-if="withdrawalManualFinalizationRequired">
-            You will be able to claim your withdrawal only after a 5+ hour withdrawal delay.
+            You will be able to claim your withdrawal after an approximate 5+ hour withdrawal delay.
             <a class="underline underline-offset-2" :href="ZKSYNC_WITHDRAWAL_DELAY" target="_blank">Learn more</a>
           </p>
           <p v-else>
-            You will receive funds only after a 5+ hour withdrawal delay.
+            You will receive funds after an approximate 5+ hour withdrawal delay.
             <a class="underline underline-offset-2" :href="ZKSYNC_WITHDRAWAL_DELAY" target="_blank">Learn more</a>
           </p>
         </CommonAlert>
@@ -326,7 +326,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ArrowTopRightOnSquareIcon, ExclamationTriangleIcon, InformationCircleIcon } from "@heroicons/vue/24/outline";
+import { ExclamationTriangleIcon, InformationCircleIcon } from "@heroicons/vue/24/outline";
 import { useRouteQuery } from "@vueuse/router";
 import { isAddress } from "ethers";
 
