@@ -53,6 +53,7 @@ export type ZkSyncNetwork = {
   nativeCurrency?: { name: string; symbol: string; decimals: number };
   nativeTokenBridgingOnly?: boolean;
   getTokens?: () => Token[] | Promise<Token[]>; // If blockExplorerApi is specified, tokens will be fetched from there. Otherwise, this function will be used.
+  isPrividium?: boolean;
 };
 
 // See the official documentation on running a local ZKsync node: https://era.zksync.io/docs/tools/testing/
