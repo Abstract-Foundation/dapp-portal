@@ -52,7 +52,7 @@ Feature: External Redirection on the Main Page
       | aria-label    | Blog               | https://zksync.mirror.xyz/                                        |
       | aria-label    | Discord Community  | https://join.zksync.dev/                                          |
       | aria-label    | Telegram Support   | https://t.me/zksync                                               |
-      | aria-label    | Twitter Community  | https://twitter.com/i/flow/login?redirect_after_login=%2Fzksync   |
+      | aria-label    |  Community  | https://x.com/i/flow/login?redirect_after_login=%2Fzksync   |
       | aria-label    | Email              | https://zksync.io/contact                                         |
 
   @id1535:II
